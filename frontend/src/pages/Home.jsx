@@ -37,11 +37,11 @@ const Home = () => {
   };
 
   const handleCallNow = () => {
-    window.location.href = `tel:${clinicData.contact.phone}`;
+    window.location.href = `tel:+91${clinicData.contact.phone.replace(/\s/g, '')}`;
   };
 
   const handleWhatsApp = () => {
-    window.open(`https://wa.me/${clinicData.contact.whatsapp.replace(/[^0-9]/g, '')}`, '_blank');
+    window.open(`https://wa.me/${clinicData.contact.whatsapp}`, '_blank');
   };
 
   return (
