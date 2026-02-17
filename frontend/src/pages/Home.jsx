@@ -405,7 +405,7 @@ const Home = () => {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <div className="space-y-2 text-gray-400">
-                <p>{clinicData.contact.phone}</p>
+                <p>+91 {clinicData.contact.phone}</p>
                 <p>{clinicData.contact.email}</p>
                 <p>{clinicData.location.area}, {clinicData.location.city}</p>
               </div>
