@@ -240,13 +240,13 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Clinic Gallery</h2>
             <p className="text-gray-600">A glimpse of our modern facility</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {galleryData.map((image) => (
-              <div key={image.id} className="overflow-hidden rounded-lg">
+              <div key={image.id} className="overflow-hidden rounded-lg border border-gray-200">
                 <img 
                   src={image.url} 
                   alt={image.alt}
-                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             ))}
