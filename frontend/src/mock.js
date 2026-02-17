@@ -1,37 +1,55 @@
 // Mock data for Dental Clinic Website
 
 export const clinicData = {
-  name: "SmileCare Dental Clinic",
-  tagline: "Your Partner in Dental Health",
+  name: "Dr Shukla Dental Clinic",
+  tagline: "Trusted Dental Care Since 2007",
   location: {
-    area: "Koramangala",
-    city: "Bangalore",
-    fullAddress: "123, 5th Block, Koramangala, Bangalore - 560034, Karnataka, India"
+    area: "Nalasopara East",
+    city: "Palghar",
+    fullAddress: "First Floor, Laxman Nagar Building, Flat no 102/103/104, above Light Bill Payment Centre, opp. BJP Office, Galanagar, Nalasopara East, Maharashtra 401209"
   },
   contact: {
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210",
-    email: "info@smilecareclinic.com"
+    phone: "+91 070301 00500",
+    whatsapp: "+91 070301 00500",
+    email: "drshukladentalclinic@gmail.com"
   },
   workingHours: {
-    weekdays: "Monday - Saturday: 9:00 AM - 8:00 PM",
-    sunday: "Sunday: 10:00 AM - 2:00 PM"
+    weekdays: "Open 7 Days a Week: 9:00 AM - 9:00 PM",
+    sunday: "24/7 Emergency Services Available"
   },
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6213466718944!2d77.61213431482207!3d12.934533990883708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU2JzA0LjMiTiA3N8KwMzYnNTIuOCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+  googleRating: {
+    stars: 4.9,
+    reviews: 800
+  },
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.8!2d72.8!3d19.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI0JzAwLjAiTiA3MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
 };
 
 export const doctorData = {
-  name: "Dr. Priya Sharma",
-  qualifications: "BDS, MDS (Orthodontics)",
-  experience: "12+ years",
-  about: "Dr. Priya Sharma is a highly experienced orthodontist with over 12 years of practice in comprehensive dental care. She completed her Bachelor of Dental Surgery (BDS) from Bangalore University and pursued her Master's in Orthodontics (MDS) from Manipal College of Dental Sciences. Dr. Sharma is committed to providing evidence-based dental treatments with a focus on patient comfort and long-term oral health.",
+  name: "Dr. Yogendra R. Shukla",
+  qualifications: "BDS",
+  registration: "Maharashtra State Dental Council (Reg. No: A-14237)",
+  experience: "18+ years",
+  since: "Registered Practitioner Since 2007",
+  about: "Dr. Yogendra R. Shukla is a highly experienced dental surgeon with 18+ years of clinical experience in general, cosmetic, and implant dentistry. He completed his Bachelor of Dental Surgery (BDS) from Maharashtra University of Health Sciences, Nashik, and has been a registered practitioner with the Maharashtra State Dental Council (Reg. No: A-14237) since 2007. His practice is trusted by hundreds of patients and holds an exceptional 4.9 Google Rating from 800+ reviews. Dr. Shukla is known for ethical treatment planning, painless procedures, and long-term patient relationships built on transparency and trust.",
   expertise: [
-    "Advanced Orthodontic Treatments",
+    "General Dentistry",
     "Cosmetic Dentistry",
-    "Dental Implantology",
-    "Root Canal Treatments"
+    "Implant Dentistry",
+    "Basal Implantology"
   ],
-  image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop"
+  advancedTraining: [
+    "Hands-On Surgical Workshop in Basal Implantology",
+    "Advanced Esthetic Dentistry Certification",
+    "International Implantology & Microsurgery Symposium (Boston Collaboration)",
+    "Continuing Dental Education in CT & MRI Diagnostics"
+  ],
+  knownFor: [
+    "Ethical treatment planning",
+    "Painless procedures",
+    "Transparency and trust",
+    "24/7 emergency services"
+  ],
+  image: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/i2ufqbwc_ChatGPT%20Image%20Feb%2017%2C%202026%2C%2001_23_12%20PM.png"
 };
 
 export const servicesData = [
@@ -57,8 +75,8 @@ export const servicesData = [
   },
   {
     id: 5,
-    title: "Pediatric Dentistry",
-    description: "Specialized dental care for children, including preventive treatments, cavity management, and habit counseling."
+    title: "Basal Implants",
+    description: "Advanced single-visit implant surgery technique for immediate tooth replacement, suitable for patients with bone loss."
   },
   {
     id: 6,
@@ -69,58 +87,66 @@ export const servicesData = [
 
 export const whyChooseUsData = [
   {
-    title: "Experienced Care",
-    description: "Over 12 years of clinical experience in comprehensive dental treatments"
+    title: "18+ Years of Experience",
+    description: "Trusted dental surgeon with extensive clinical experience since 2007"
   },
   {
-    title: "Hygiene-Focused Clinic",
-    description: "Strict sterilization protocols following international infection control standards"
+    title: "Open 365 Days",
+    description: "No holidays - open 7 days a week including Sundays and festivals"
   },
   {
-    title: "Modern Equipment",
-    description: "State-of-the-art dental technology for accurate diagnosis and effective treatment"
+    title: "24/7 Emergency Services",
+    description: "Round-the-clock emergency dental care available any time you need it"
   },
   {
-    title: "Transparent Consultation",
-    description: "Clear communication about treatment options, procedures, and associated costs"
+    title: "4.9 Google Rating",
+    description: "Exceptional rating from 800+ verified patient reviews"
+  },
+  {
+    title: "Ethical Treatment",
+    description: "Transparent treatment planning with focus on patient education and long-term care"
+  },
+  {
+    title: "Advanced Training",
+    description: "International certifications in implantology, cosmetic dentistry, and microsurgery"
   }
 ];
 
 export const reviewsData = [
   {
     id: 1,
-    name: "Rajesh Kumar",
-    date: "2 weeks ago",
+    name: "Prakash Patil",
+    date: "1 week ago",
     rating: 5,
-    review: "Had a root canal treatment done here. Dr. Sharma explained the entire procedure clearly. The clinic maintains high hygiene standards. Professional experience overall."
+    review: "Excellent experience with Dr. Shukla. Got my root canal done completely painlessly. He explained every step clearly and charges are very reasonable. Highly recommended!"
   },
   {
     id: 2,
-    name: "Anita Desai",
-    date: "1 month ago",
+    name: "Sneha Joshi",
+    date: "2 weeks ago",
     rating: 5,
-    review: "Visited for dental cleaning. The staff was courteous and the equipment appeared modern. Dr. Sharma took time to address all my concerns about gum health."
+    review: "Best dentist in Nallasopara! Dr. Shukla is very professional and explains everything in detail. The clinic is clean and well-maintained. Very satisfied with my dental implant treatment."
   },
   {
     id: 3,
-    name: "Vikram Reddy",
-    date: "1 month ago",
+    name: "Ramesh Yadav",
+    date: "3 weeks ago",
     rating: 5,
-    review: "Got dental implants done. The process was explained thoroughly and post-operative care instructions were clear. Satisfied with the treatment outcome."
+    review: "Had a dental emergency on Sunday and Dr. Shukla attended to me immediately. Very grateful for his 24/7 availability. Treatment was painless and effective."
   },
   {
     id: 4,
-    name: "Meera Iyer",
-    date: "2 months ago",
+    name: "Priya Sharma",
+    date: "1 month ago",
     rating: 5,
-    review: "Brought my 6-year-old for a dental check-up. Dr. Sharma was patient with my child and made the experience comfortable. Good pediatric care."
+    review: "Dr. Shukla is extremely ethical and transparent in his approach. He suggested only necessary treatments. Got my teeth cleaning and cosmetic work done. Very happy with results."
   },
   {
     id: 5,
-    name: "Arjun Mehta",
-    date: "3 months ago",
+    name: "Anil Deshmukh",
+    date: "1 month ago",
     rating: 5,
-    review: "Had teeth whitening done here. Results were as explained during consultation. The clinic follows proper safety protocols. Would visit again for future dental needs."
+    review: "Amazing doctor! Got my basal implants done in single visit. Dr. Shukla's expertise and advanced training really shows. Modern equipment and painless procedure. Worth every rupee."
   }
 ];
 
@@ -160,32 +186,37 @@ export const galleryData = [
 export const faqData = [
   {
     id: 1,
-    question: "How often should I visit the dentist?",
-    answer: "Regular dental check-ups every 6 months are recommended for maintaining optimal oral health. This frequency may vary based on individual oral health conditions and risk factors."
+    question: "Are you open on Sundays and holidays?",
+    answer: "Yes, Dr. Shukla Dental Clinic is open 365 days a year, including Sundays and all festivals. We also provide 24/7 emergency dental services for urgent cases."
   },
   {
     id: 2,
     question: "Is root canal treatment painful?",
-    answer: "Root canal treatment is performed under local anesthesia, which minimizes discomfort during the procedure. Modern techniques and anesthesia make the treatment comparable to getting a routine filling."
+    answer: "Root canal treatment at our clinic is completely painless. We use modern anesthesia techniques and Dr. Shukla's expertise ensures a comfortable experience. The procedure is comparable to getting a routine filling."
   },
   {
     id: 3,
-    question: "How long do dental implants last?",
-    answer: "With proper care and maintenance, dental implants can last 15-25 years or longer. Success depends on oral hygiene, regular dental visits, and overall health factors."
+    question: "What are basal implants and how are they different?",
+    answer: "Basal implants are advanced single-visit implant surgery technique where teeth can be replaced immediately, often in just one day. They are especially suitable for patients with bone loss and don't require lengthy healing periods like traditional implants."
   },
   {
     id: 4,
-    question: "What is the cost of teeth cleaning?",
-    answer: "The cost varies based on the extent of cleaning required. A basic prophylaxis session typically ranges from ₹1,000 to ₹2,000. Deep cleaning for periodontal conditions may cost more. Exact pricing is provided after examination."
+    question: "Where is the clinic located in Nallasopara?",
+    answer: "We are located on the First Floor of Laxman Nagar Building (Flat no 102/103/104), above Light Bill Payment Centre, opposite BJP Office in Galanagar, Nalasopara East, Maharashtra 401209."
   },
   {
     id: 5,
-    question: "Do you accept dental insurance?",
-    answer: "We work with most major dental insurance providers. Please bring your insurance details during your visit, and our staff will assist with claim processing and documentation."
+    question: "How much experience does Dr. Shukla have?",
+    answer: "Dr. Yogendra R. Shukla has 18+ years of clinical experience in general, cosmetic, and implant dentistry. He has been a registered practitioner with Maharashtra State Dental Council since 2007 and holds advanced international certifications."
   },
   {
     id: 6,
     question: "What should I do in a dental emergency?",
-    answer: "For dental emergencies such as severe pain, trauma, or swelling, contact us immediately. We accommodate emergency cases and provide guidance on immediate care steps while you travel to the clinic."
+    answer: "Call us immediately at 070301 00500. Dr. Shukla provides 24/7 emergency dental services and will attend to urgent cases at any time, including nights and holidays."
+  },
+  {
+    id: 7,
+    question: "How can I book an appointment?",
+    answer: "You can call us at 070301 00500 or WhatsApp the same number. We also accept walk-in patients. For emergencies, we provide immediate attention any time of the day."
   }
 ];
