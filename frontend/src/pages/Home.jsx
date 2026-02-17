@@ -78,8 +78,14 @@ const Home = () => {
             <p className="text-xl text-gray-700 mb-2">
               {doctorData.name}, {doctorData.qualifications}
             </p>
+            <p className="text-md text-gray-600 mb-2">
+              {doctorData.registration}
+            </p>
             <p className="text-lg text-gray-600 mb-2">
-              {doctorData.experience} of Experience
+              {doctorData.experience} of Clinical Experience | {doctorData.since}
+            </p>
+            <p className="text-lg text-gray-600 mb-2">
+              ⭐ {clinicData.googleRating.stars} Google Rating from {clinicData.googleRating.reviews}+ Reviews
             </p>
             <p className="text-lg text-gray-600 mb-8">
               <MapPin className="w-5 h-5 inline mr-1" />
@@ -115,16 +121,40 @@ const Home = () => {
               <p className="text-gray-700 mb-6 leading-relaxed">
                 {doctorData.about}
               </p>
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold text-gray-900">Areas of Expertise:</h3>
-                <ul className="space-y-2">
-                  {doctorData.expertise.map((item, index) => (
-                    <li key={index} className="text-gray-700 flex items-start">
-                      <span className="text-blue-600 mr-2">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Advanced Training & Certifications:</h3>
+                  <ul className="space-y-2">
+                    {doctorData.advancedTraining.map((item, index) => (
+                      <li key={index} className="text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Specialized In:</h3>
+                  <ul className="space-y-2">
+                    {doctorData.expertise.map((item, index) => (
+                      <li key={index} className="text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Known For:</h3>
+                  <ul className="space-y-2">
+                    {doctorData.knownFor.map((item, index) => (
+                      <li key={index} className="text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
