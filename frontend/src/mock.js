@@ -14,7 +14,7 @@ export const clinicData = {
     email: "drshukladentalclinic@gmail.com"
   },
   workingHours: {
-    weekdays: "Open 7 Days a Week: 9:00 AM - 9:00 PM",
+    weekdays: "Open 7 Days: 9:00 AM - 2:00 PM, 6:00 PM - 11:30 PM",
     sunday: "24/7 Emergency Services Available"
   },
   googleRating: {
@@ -115,71 +115,61 @@ export const whyChooseUsData = [
 export const reviewsData = [
   {
     id: 1,
-    name: "Prakash Patil",
-    date: "1 week ago",
+    name: "Kousthubh Lele",
+    date: "3 months ago",
     rating: 5,
-    review: "Excellent experience with Dr. Shukla. Got my root canal done completely painlessly. He explained every step clearly and charges are very reasonable. Highly recommended!"
+    review: "Fantastic Service, best Medical practitioner, affordable."
   },
   {
     id: 2,
-    name: "Sneha Joshi",
-    date: "2 weeks ago",
+    name: "Naina Sonar",
+    date: "3 weeks ago",
     rating: 5,
-    review: "Best dentist in Nallasopara! Dr. Shukla is very professional and explains everything in detail. The clinic is clean and well-maintained. Very satisfied with my dental implant treatment."
+    review: "I have removed my teeth from dr shukla's clinic by using laser method and it was completely done without any pain... I must have to say for dental treatment this clinic is completely excellent 👍 Thank you dr Shukla ji..."
   },
   {
     id: 3,
-    name: "Ramesh Yadav",
-    date: "3 weeks ago",
+    name: "Nimit Beradiya",
+    date: "4 weeks ago",
     rating: 5,
-    review: "Had a dental emergency on Sunday and Dr. Shukla attended to me immediately. Very grateful for his 24/7 availability. Treatment was painless and effective."
+    review: "The best dental experience I've ever had. Very professional, no wait time, and they explained everything clearly. My teeth feel great!"
   },
   {
     id: 4,
-    name: "Priya Sharma",
-    date: "1 month ago",
+    name: "Ravi Shankar",
+    date: "a month ago",
     rating: 5,
-    review: "Dr. Shukla is extremely ethical and transparent in his approach. He suggested only necessary treatments. Got my teeth cleaning and cosmetic work done. Very happy with results."
+    review: "Non pain and good doctor Mr Shukla ji, treatment is giving best in nalasopara"
   },
   {
     id: 5,
-    name: "Anil Deshmukh",
-    date: "1 month ago",
+    name: "Ayush Singh",
+    date: "4 months ago",
     rating: 5,
-    review: "Amazing doctor! Got my basal implants done in single visit. Dr. Shukla's expertise and advanced training really shows. Modern equipment and painless procedure. Worth every rupee."
+    review: "A very good doctor and also explained the procedure very well and the fees is also good and reasonable."
   }
 ];
 
 export const galleryData = [
   {
     id: 1,
-    url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
-    alt: "Modern dental clinic reception"
+    url: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/3i2fuu5o_Screenshot%202026-02-17%20134347.png",
+    alt: "Modern dental chair and equipment"
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop",
-    alt: "Dental treatment room"
+    url: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/4qsrvkel_Screenshot%202026-02-17%20135018.png",
+    alt: "Dental services available"
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop",
-    alt: "Dental equipment"
+    url: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/9oebo0ph_Screenshot%202026-02-17%20135448.png",
+    alt: "Dr. Shukla treating patient"
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&h=400&fit=crop",
-    alt: "Sterilization area"
-  },
-  {
-    id: 5,
-    url: "https://images.unsplash.com/photo-1609840112855-9ab5ad8f66e4?w=600&h=400&fit=crop",
-    alt: "Consultation area"
-  },
-  {
-    id: 6,
-    url: "https://images.unsplash.com/photo-1629909615957-be38c5a300c5?w=600&h=400&fit=crop",
-    alt: "Waiting area"
+    url: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/xsgkpqd7_Screenshot%202026-02-17%20140140.png",
+    alt: "Clinic reception and waiting area"
   }
 ];
 
