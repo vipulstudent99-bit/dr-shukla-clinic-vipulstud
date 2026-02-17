@@ -355,7 +355,7 @@ const Home = () => {
                     <Phone className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900">Phone</p>
-                      <p className="text-gray-600">{clinicData.contact.phone}</p>
+                      <p className="text-gray-600">+91 {clinicData.contact.phone}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
