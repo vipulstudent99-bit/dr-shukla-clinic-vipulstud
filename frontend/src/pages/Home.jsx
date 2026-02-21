@@ -129,8 +129,30 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Header - Compact */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
+          {/* Mobile Layout: Stacked vertically, centered */}
+          <div className="flex flex-col items-center gap-2 sm:hidden">
+            <div className="text-center">
+              <h2 className="text-sm font-semibold text-gray-900">{clinicData.name}</h2>
+              <p className="text-xs text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
+            </div>
+            <div className="flex gap-1.5">
+              <Button onClick={() => setIsAppointmentModalOpen(true)} size="sm" className="bg-emerald-600 hover:bg-emerald-700 font-semibold text-xs px-2.5 h-8">
+                <CalendarIcon className="w-3 h-3 mr-1" />
+                Book
+              </Button>
+              <Button onClick={handleCallNow} size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 text-xs px-2.5 h-8">
+                <Phone className="w-3 h-3 mr-1" />
+                Call
+              </Button>
+              <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 text-xs px-2.5 h-8">
+                <MessageCircle className="w-3 h-3 mr-1" />
+                WhatsApp
+              </Button>
+            </div>
+          </div>
+          {/* Desktop Layout: Side by side */}
+          <div className="hidden sm:flex justify-between items-center">
             <div>
               <h2 className="text-base font-semibold text-gray-900">{clinicData.name}</h2>
               <p className="text-xs text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
