@@ -26,6 +26,7 @@ import {
 const Home = () => {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [appointmentDate, setAppointmentDate] = useState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [appointmentData, setAppointmentData] = useState({
     patient_name: '',
     phone: '',
@@ -62,44 +63,57 @@ const Home = () => {
     });
   };
 
-  const handleAppointmentSubmit = (e) => {
+  const handleAppointmentSubmit = async (e) => {
     e.preventDefault();
-    // Submission logic will be added later
-    console.log('Appointment data:', {
-      ...appointmentData,
-      appointment_date: appointmentDate
-    });
-    toast.success('Appointment booking feature coming soon!');
-  };
+    setIsSubmitting(true);
 
-  // Temporary test function for Supabase
-  const handleTestSupabaseInsert = async () => {
     try {
-      const testData = {
-        patient_name: 'Test User',
-        phone: '9999999999',
-        appointment_date: new Date().toISOString().split('T')[0], // Today's date in YYYY-MM-DD format
-        appointment_time: '10:00 AM',
-        message: 'Test Insert'
+      // Format date for Supabase (YYYY-MM-DD)
+      const formattedDate = format(appointmentDate, 'yyyy-MM-dd');
+
+      // Prepare data for insertion
+      const insertData = {
+        patient_name: appointmentData.patient_name,
+        phone: appointmentData.phone,
+        appointment_date: formattedDate,
+        appointment_time: appointmentData.appointment_time,
+        message: appointmentData.message || null
       };
 
-      console.log('Attempting to insert test data:', testData);
+      console.log('Submitting appointment:', insertData);
 
+      // Insert into Supabase
       const { data, error } = await supabase
         .from('appointments')
-        .insert([testData])
-        .select();
+        .insert([insertData]);
 
       if (error) {
-        console.error('Insert error:', error);
-        alert('Insert Failed: ' + error.message);
-      } else {
-        console.log('Insert success:', data);
-        alert('Insert Success');
+        console.error(error);
+        alert(error.message);
+        setIsSubmitting(false);
+        return;
       }
+
+      // Success
+      alert('Appointment request submitted successfully!');
+      
+      // Reset form
+      setAppointmentData({
+        patient_name: '',
+        phone: '',
+        appointment_time: '',
+        message: ''
+      });
+      setAppointmentDate(undefined);
+      
+      // Close modal
+      setIsAppointmentModalOpen(false);
+      
     } catch (err) {
       console.error('Unexpected error:', err);
-      alert('Insert Failed: ' + err.message);
+      alert('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -442,18 +456,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
-          {/* Temporary Test Button */}
-          <div className="border-t border-gray-800 pt-6 mb-6 text-center">
-            <Button 
-              onClick={handleTestSupabaseInsert}
-              variant="outline"
-              className="bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"
-            >
-              Test Supabase Insert
-            </Button>
-          </div>
-
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2024 {clinicData.name}. All rights reserved.</p>
           </div>
@@ -577,15 +579,16 @@ const Home = () => {
                 variant="outline"
                 onClick={() => setIsAppointmentModalOpen(false)}
                 className="flex-1"
+                disabled={isSubmitting}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 className="flex-1 bg-blue-600 hover:bg-blue-700"
-                disabled={!appointmentDate || !appointmentData.appointment_time}
+                disabled={!appointmentDate || !appointmentData.appointment_time || isSubmitting}
               >
-                Book Appointment
+                {isSubmitting ? 'Booking...' : 'Book Appointment'}
               </Button>
             </div>
           </form>
