@@ -223,7 +223,7 @@ const Home = () => {
       </header>
 
       {/* Hero Section - Compact Layout */}
-      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-8 lg:py-12">
+      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-8 lg:py-12 min-h-[calc(100vh-64px)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Left Column - Content */}
