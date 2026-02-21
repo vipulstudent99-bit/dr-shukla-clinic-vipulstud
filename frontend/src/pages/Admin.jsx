@@ -5,30 +5,88 @@ import { Input } from '../components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Badge } from '../components/ui/badge';
+import { Label } from '../components/ui/label';
 import { Loader2, CheckCircle, XCircle, Trash2, Lock } from 'lucide-react';
 
 const Admin = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Authentication state
+  const [session, setSession] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  
+  // Login form state
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  
+  // Dashboard state
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [updating, setUpdating] = useState(null);
 
-  const ADMIN_PASSWORD = 'drshukla2024';
+  // Check for existing session on mount
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setAuthLoading(false);
+    });
 
-  const handlePasswordSubmit = (e) => {
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setAuthLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Fetch appointments when authenticated
+  useEffect(() => {
+    if (session) {
+      fetchAppointments();
+    }
+  }, [session]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      setPasswordError('');
-    } else {
-      setPasswordError('Incorrect password. Access denied.');
-      setPassword('');
+    setLoginLoading(true);
+    setLoginError('');
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setLoginError(error.message);
+      } else {
+        // Session will be set by onAuthStateChange listener
+        setEmail('');
+        setPassword('');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setLoginError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      setSession(null);
+      setAppointments([]);
+    } catch (err) {
+      console.error('Logout error:', err);
     }
   };
 
   const fetchAppointments = async () => {
+    if (!session) return;
+    
     setLoading(true);
     try {
       const { data, error } = await supabase
@@ -50,16 +108,9 @@ const Admin = () => {
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchAppointments();
-    }
-  }, [isAuthenticated]);
-
   const handleUpdateStatus = async (id, newStatus) => {
     setUpdating(id);
     try {
-      // Use .select() to verify the update was actually applied
       const { data, error } = await supabase
         .from('appointments')
         .update({ status: newStatus })
@@ -70,12 +121,10 @@ const Admin = () => {
         console.error('Error updating status:', error);
         alert('Failed to update status: ' + error.message);
       } else if (!data || data.length === 0) {
-        // Update returned no rows - likely RLS policy blocking the update
-        console.error('Update returned no data - RLS policy may be blocking updates');
-        alert('Update failed: You may not have permission to update this appointment. Please check Supabase RLS policies.');
+        console.error('Update returned no data');
+        alert('Update failed: Please check your permissions.');
       } else {
         alert(`Appointment ${newStatus} successfully!`);
-        // Refetch fresh data from database
         await fetchAppointments();
       }
     } catch (err) {
@@ -93,7 +142,6 @@ const Admin = () => {
 
     setUpdating(id);
     try {
-      // Use .select() to verify the delete was actually applied
       const { data, error } = await supabase
         .from('appointments')
         .delete()
@@ -104,12 +152,10 @@ const Admin = () => {
         console.error('Error deleting appointment:', error);
         alert('Failed to delete appointment: ' + error.message);
       } else if (!data || data.length === 0) {
-        // Delete returned no rows - likely RLS policy blocking the delete
-        console.error('Delete returned no data - RLS policy may be blocking deletes');
-        alert('Delete failed: You may not have permission to delete this appointment. Please check Supabase RLS policies.');
+        console.error('Delete returned no data');
+        alert('Delete failed: Please check your permissions.');
       } else {
         alert('Appointment deleted successfully!');
-        // Refetch fresh data from database
         await fetchAppointments();
       }
     } catch (err) {
@@ -140,8 +186,17 @@ const Admin = () => {
     });
   };
 
-  // Password Protection Screen
-  if (!isAuthenticated) {
+  // Loading state while checking auth
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+      </div>
+    );
+  }
+
+  // Login Screen (not authenticated)
+  if (!session) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <Card className="w-full max-w-md">
@@ -152,26 +207,53 @@ const Admin = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                  Enter Admin Password
-                </label>
+                <Label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="w-full"
+                  disabled={loginLoading}
+                />
+              </div>
+              <div>
+                <Label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder="Enter your password"
                   required
                   className="w-full"
+                  disabled={loginLoading}
                 />
-                {passwordError && (
-                  <p className="text-red-500 text-sm mt-2">{passwordError}</p>
+                {loginError && (
+                  <p className="text-red-500 text-sm mt-2">{loginError}</p>
                 )}
               </div>
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                Access Admin Panel
+              <Button 
+                type="submit" 
+                className="w-full bg-blue-600 hover:bg-blue-700"
+                disabled={loginLoading}
+              >
+                {loginLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                    Signing in...
+                  </>
+                ) : (
+                  'Access Admin Panel'
+                )}
               </Button>
             </form>
           </CardContent>
@@ -180,7 +262,7 @@ const Admin = () => {
     );
   }
 
-  // Admin Dashboard
+  // Admin Dashboard (authenticated)
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b">
@@ -188,7 +270,7 @@ const Admin = () => {
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
             <Button 
-              onClick={() => setIsAuthenticated(false)} 
+              onClick={handleLogout} 
               variant="outline"
               className="text-red-600 border-red-600 hover:bg-red-50"
             >
