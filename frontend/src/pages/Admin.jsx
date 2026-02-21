@@ -59,14 +59,20 @@ const Admin = () => {
   const handleUpdateStatus = async (id, newStatus) => {
     setUpdating(id);
     try {
-      const { error } = await supabase
+      // Use .select() to verify the update was actually applied
+      const { data, error } = await supabase
         .from('appointments')
         .update({ status: newStatus })
-        .eq('id', id);
+        .eq('id', id)
+        .select();
 
       if (error) {
         console.error('Error updating status:', error);
         alert('Failed to update status: ' + error.message);
+      } else if (!data || data.length === 0) {
+        // Update returned no rows - likely RLS policy blocking the update
+        console.error('Update returned no data - RLS policy may be blocking updates');
+        alert('Update failed: You may not have permission to update this appointment. Please check Supabase RLS policies.');
       } else {
         alert(`Appointment ${newStatus} successfully!`);
         // Refetch fresh data from database
