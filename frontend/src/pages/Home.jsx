@@ -369,7 +369,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-[#F8FAFC]">
+      <section id="services" className="py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Our Services</h2>
@@ -393,7 +393,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-white">
+      <section id="why-us" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Why Choose Us</h2>
