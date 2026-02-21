@@ -68,11 +68,9 @@ const Admin = () => {
         console.error('Error updating status:', error);
         alert('Failed to update status: ' + error.message);
       } else {
-        // Update local state
-        setAppointments(appointments.map(apt => 
-          apt.id === id ? { ...apt, status: newStatus } : apt
-        ));
         alert(`Appointment ${newStatus} successfully!`);
+        // Refetch fresh data from database
+        await fetchAppointments();
       }
     } catch (err) {
       console.error('Unexpected error:', err);
@@ -98,9 +96,9 @@ const Admin = () => {
         console.error('Error deleting appointment:', error);
         alert('Failed to delete appointment: ' + error.message);
       } else {
-        // Remove from local state
-        setAppointments(appointments.filter(apt => apt.id !== id));
         alert('Appointment deleted successfully!');
+        // Refetch fresh data from database
+        await fetchAppointments();
       }
     } catch (err) {
       console.error('Unexpected error:', err);
