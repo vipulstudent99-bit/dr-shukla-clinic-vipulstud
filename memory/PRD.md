@@ -3,7 +3,8 @@
 ## Project Overview
 **Project Name:** Dr Shukla Dental Clinic Website  
 **Date Created:** February 17, 2025  
-**Current Phase:** Frontend Complete with Real Data  
+**Last Updated:** February 21, 2025  
+**Current Phase:** Production Ready with Admin Dashboard  
 
 ## Original Problem Statement
 Create a clean, professional, fast-loading website for a dental clinic in India with minimal design, medical credibility tone, white background with subtle blue accents, no heavy animations, sliders, or parallax effects. Focus on structure, clarity, and mobile-first responsive design.
@@ -12,13 +13,14 @@ Create a clean, professional, fast-loading website for a dental clinic in India 
 1. **Potential Patients**: Looking for trustworthy dental clinic information, services, and contact details
 2. **Existing Patients**: Seeking appointment booking, clinic hours, and location information
 3. **Emergency Cases**: Need 24/7 emergency dental care services
+4. **Admin/Staff**: Managing appointments via dashboard
 
 ## Core Requirements (Static)
 
 ### Design Style
 - Minimal, clean design
 - Medical credibility tone
-- White background with subtle blue (#2563eb) accents
+- White background with subtle blue accents
 - No heavy animations, sliders, or parallax effects
 - Focus on structure and clarity
 - Mobile-first responsive design
@@ -30,22 +32,23 @@ Create a clean, professional, fast-loading website for a dental clinic in India 
 - Optimized for performance
 - Static content layout
 - React frontend with shadcn/ui components
-
-### Website Structure (All Sections)
-1. ✅ Hero Section (with Call/WhatsApp buttons)
-2. ✅ About Doctor Section
-3. ✅ Services Section (6 services in grid)
-4. ✅ Why Choose Us Section (6 key differentiators)
-5. ✅ Patient Reviews Section
-6. ✅ Clinic Gallery Section
-7. ✅ FAQ Section (accordion with 7 questions)
-8. ✅ Contact Section (form + map)
-9. ✅ Footer
+- Supabase for backend (appointments database + auth)
 
 ## What's Been Implemented
 
-### Phase 1 - Frontend Complete (February 17, 2025)
-**Status:** ✅ Complete with Real Clinic Data
+### Phase 1 - Frontend Complete (February 17, 2025) ✅
+### Phase 2 - Appointment System (February 18-19, 2025) ✅
+### Phase 3 - Admin Dashboard with Supabase Auth (February 21, 2025) ✅
+
+#### Latest Updates (February 21, 2025):
+- ✅ **New Header Navigation**: Desktop navigation bar with About, Services, Why Us, Reviews, Gallery, FAQ, Contact links
+- ✅ **Mobile Hamburger Menu**: Collapsible menu with all nav links + Call/WhatsApp buttons
+- ✅ **Two-Column Hero Section**: Doctor image on right, clinic info on left (like Dr. Mathai reference)
+- ✅ **Stats Bar**: 18+ Years, 4.9 Rating, 800+ Reviews, 365 Days Open
+- ✅ **Footer Updates**: Removed email, added full address, "Digital Structure AI" branding
+- ✅ **Phone Display**: Removed +91 prefix from all phone displays
+- ✅ **Map Section**: Only 360° Clinic Tour button (removed "Open in Google Maps" link)
+- ✅ **Supabase Authentication**: Admin panel now uses real Supabase auth (email/password) instead of hardcoded password
 
 #### Clinic Information:
 - **Clinic Name:** Dr Shukla Dental Clinic
@@ -54,54 +57,48 @@ Create a clean, professional, fast-loading website for a dental clinic in India 
 - **Experience:** 18+ years (Since 2007)
 - **Location:** Nalasopara East, Palghar, Maharashtra
 - **Address:** First Floor, Laxman Nagar Building, Flat no 102/103/104, above Light Bill Payment Centre, opp. BJP Office, Galanagar, Nalasopara East, Maharashtra 401209
-- **Phone:** +91 070301 00500
+- **Phone:** 070301 00500
+- **WhatsApp:** 917030100500
 - **Google Rating:** 4.9 stars from 800+ reviews
 
-#### Key Differentiators Highlighted:
-- ✅ Open 365 days a year (No holidays, even Sundays and festivals)
-- ✅ 24/7 Emergency dental services
-- ✅ 18+ years of clinical experience
-- ✅ Advanced international certifications
-- ✅ Basal implantology specialist
-- ✅ Ethical treatment & transparent pricing
+#### Website Sections:
+1. ✅ Header with Navigation (Desktop: links, Mobile: hamburger menu)
+2. ✅ Hero Section (Two-column layout with doctor image + stats bar)
+3. ✅ About Doctor Section
+4. ✅ Services Section (6 services in grid)
+5. ✅ Why Choose Us Section (6 key differentiators)
+6. ✅ Patient Reviews Section
+7. ✅ Clinic Gallery Section
+8. ✅ FAQ Section (accordion with 7 questions)
+9. ✅ Contact Section (info + 360° map)
+10. ✅ Footer (Digital Structure AI branding)
 
-#### Features Implemented:
-- ✅ Sticky header with clinic name, location, Call/WhatsApp buttons
-- ✅ Hero section with complete credentials and 4.9 Google rating
-- ✅ Comprehensive About Doctor section with:
-  - Professional photo
-  - Detailed biography
-  - Advanced training certifications (4 international programs)
-  - Specialized expertise areas
-  - "Known For" highlights
-- ✅ Services grid (6 services including Basal Implants)
-- ✅ Why Choose Us section (6 key differentiators in 3-column grid)
-- ✅ Patient Reviews (5 authentic local reviews)
-- ✅ Clinic Gallery (6 professional images)
-- ✅ FAQ section with 7 questions including availability and emergency services
-- ✅ Contact section with working form and map
-- ✅ Footer with complete contact information
-- ✅ Click-to-call functionality (070301 00500)
-- ✅ WhatsApp integration
-- ✅ Toast notifications for form submission
-- ✅ Fully responsive (desktop + mobile tested)
-- ✅ Clean, minimal design maintaining medical credibility
+#### Admin Dashboard (/admin):
+- ✅ Supabase authentication (email/password)
+- ✅ Appointment listing with Name, Phone, Date, Time, Message, Status
+- ✅ Confirm/Cancel/Delete appointment actions
+- ✅ Logout functionality
+- ⚠️ **Requires Supabase RLS policies for update/delete operations**
+
+## Pending Items
+
+### P0 - Blocking
+1. **Supabase RLS Policies Required**: User needs to add UPDATE and DELETE policies in Supabase dashboard for the admin panel to fully function:
+   ```sql
+   CREATE POLICY "Allow authenticated update" ON appointments
+   FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+   
+   CREATE POLICY "Allow authenticated delete" ON appointments
+   FOR DELETE TO authenticated USING (true);
+   ```
+2. **Create Admin User**: User needs to create an admin user in Supabase Authentication
 
 ## Prioritized Backlog
 
-### P0 Features (Next Phase - Backend)
-- Backend API setup with FastAPI
-- MongoDB models for contact inquiries
-- Contact form submission endpoint with email notifications
-- Admin dashboard for viewing inquiries
-- Appointment booking system
-
 ### P1 Features (Enhancement)
-- Online appointment booking with calendar
-- SMS confirmation for appointments
-- Real Google Reviews integration (already has 800+ reviews)
-- WhatsApp Business API for automated responses
-- Click-to-call analytics
+- SEO optimizations (alt text for all images, lazy loading)
+- Accessibility review (form labels, ARIA attributes)
+- Performance optimization
 
 ### P2 Features (Future)
 - Patient portal for records
@@ -109,34 +106,34 @@ Create a clean, professional, fast-loading website for a dental clinic in India 
 - Blog section for dental health tips
 - Video testimonials
 - Multi-language support (Marathi, Hindi)
-
-## Next Action Items
-1. Deploy website to production
-2. Set up Google Analytics and Search Console
-3. Implement schema markup for local SEO
-4. Backend development for contact form
-5. Set up email notifications for inquiries
-6. Add Google My Business integration
-7. Implement appointment booking system
+- SMS confirmation for appointments
 
 ## Technical Stack
 - **Frontend:** React 19, shadcn/ui, Tailwind CSS, lucide-react
-- **Backend:** FastAPI (to be implemented)
-- **Database:** MongoDB (to be implemented)
+- **Backend:** Supabase (PostgreSQL)
+- **Authentication:** Supabase Auth
 - **Deployment:** Emergent Platform
 
-## Competitive Advantages Highlighted
-1. **24/7 Availability** - Major differentiator for emergency cases
-2. **No Holidays** - Open 365 days including festivals
-3. **18+ Years Experience** - Established trust and credibility
-4. **4.9 Google Rating** - Social proof from 800+ reviews
-5. **International Training** - Boston collaboration, advanced certifications
-6. **Basal Implants** - Specialized single-visit implant surgery
+## Files Reference
+- `/app/frontend/src/pages/Home.jsx` - Main landing page
+- `/app/frontend/src/pages/Admin.jsx` - Admin dashboard with Supabase auth
+- `/app/frontend/src/supabaseClient.js` - Supabase client configuration
+- `/app/frontend/src/mock.js` - Clinic data
+- `/app/frontend/.env` - Environment variables (Supabase URL & Key)
 
-## Content Guidelines Followed
-- ✅ No exaggerated claims
-- ✅ No "best", "#1", or "guaranteed" language
-- ✅ Factual and professional tone
-- ✅ No aggressive marketing language
-- ✅ Medical credibility maintained
-- ✅ Transparent about qualifications and registration
+## Database Schema (Supabase)
+```sql
+Table: appointments
+- id (uuid, primary key)
+- patient_name (text)
+- phone (text)
+- appointment_date (date)
+- appointment_time (text)
+- message (text, nullable)
+- status (text, default 'pending')
+- created_at (timestamp)
+```
+
+## Footer Branding
+**Digital Structure AI**  
+*Designed & Developed with Excellence*
