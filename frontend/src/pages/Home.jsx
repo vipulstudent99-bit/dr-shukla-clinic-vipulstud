@@ -415,6 +415,138 @@ const Home = () => {
           </div>
         </div>
       </footer>
+
+      {/* Appointment Booking Modal */}
+      <Dialog open={isAppointmentModalOpen} onOpenChange={setIsAppointmentModalOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-gray-900">Book an Appointment</DialogTitle>
+            <DialogDescription className="text-gray-600">
+              Schedule your visit with Dr. {doctorData.name}. We'll confirm your appointment shortly.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <form onSubmit={handleAppointmentSubmit} className="space-y-6 mt-4">
+            {/* Name Field */}
+            <div className="space-y-2">
+              <Label htmlFor="patient_name" className="text-sm font-medium text-gray-900">
+                Full Name <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="patient_name"
+                name="patient_name"
+                value={appointmentData.patient_name}
+                onChange={handleAppointmentInputChange}
+                placeholder="Enter your full name"
+                required
+                className="w-full"
+              />
+            </div>
+
+            {/* Phone Field */}
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-sm font-medium text-gray-900">
+                Phone Number <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={appointmentData.phone}
+                onChange={handleAppointmentInputChange}
+                placeholder="Enter your phone number"
+                required
+                className="w-full"
+              />
+            </div>
+
+            {/* Date Picker */}
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-gray-900">
+                Preferred Date <span className="text-red-500">*</span>
+              </Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start text-left font-normal"
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {appointmentDate ? format(appointmentDate, 'PPP') : <span>Pick a date</span>}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={appointmentDate}
+                    onSelect={setAppointmentDate}
+                    disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+
+            {/* Time Slot Dropdown */}
+            <div className="space-y-2">
+              <Label htmlFor="appointment_time" className="text-sm font-medium text-gray-900">
+                Preferred Time <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                value={appointmentData.appointment_time}
+                onValueChange={(value) => setAppointmentData({ ...appointmentData, appointment_time: value })}
+                required
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a time slot" />
+                </SelectTrigger>
+                <SelectContent>
+                  {timeSlots.map((slot) => (
+                    <SelectItem key={slot} value={slot}>
+                      {slot}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Message Field (Optional) */}
+            <div className="space-y-2">
+              <Label htmlFor="message" className="text-sm font-medium text-gray-900">
+                Additional Notes <span className="text-gray-500">(Optional)</span>
+              </Label>
+              <Textarea
+                id="message"
+                name="message"
+                value={appointmentData.message}
+                onChange={handleAppointmentInputChange}
+                placeholder="Any specific concerns or questions?"
+                rows={3}
+                className="w-full"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setIsAppointmentModalOpen(false)}
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-blue-600 hover:bg-blue-700"
+                disabled={!appointmentDate || !appointmentData.appointment_time}
+              >
+                Book Appointment
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
