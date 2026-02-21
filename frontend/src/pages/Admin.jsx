@@ -61,12 +61,16 @@ const Admin = () => {
 
       if (error) {
         // Handle common Supabase auth errors with user-friendly messages
-        if (error.message.includes('Invalid login credentials')) {
+        const errorMessage = error.message || '';
+        if (errorMessage.includes('Invalid login credentials') || errorMessage.includes('invalid_credentials')) {
           setLoginError('Invalid email or password. Please try again.');
-        } else if (error.message.includes('Email not confirmed')) {
+        } else if (errorMessage.includes('Email not confirmed')) {
           setLoginError('Please verify your email before logging in.');
+        } else if (errorMessage.includes('body stream')) {
+          // Handle the body stream already read error - usually means invalid credentials
+          setLoginError('Invalid email or password. Please try again.');
         } else {
-          setLoginError(error.message);
+          setLoginError(errorMessage || 'Login failed. Please try again.');
         }
       } else {
         // Session will be set by onAuthStateChange listener
@@ -75,7 +79,12 @@ const Admin = () => {
       }
     } catch (err) {
       console.error('Login error:', err);
-      setLoginError('Unable to connect. Please check your internet connection.');
+      const errorMsg = err?.message || '';
+      if (errorMsg.includes('body stream')) {
+        setLoginError('Invalid email or password. Please try again.');
+      } else {
+        setLoginError('Unable to connect. Please check your internet connection.');
+      }
     } finally {
       setLoginLoading(false);
     }
