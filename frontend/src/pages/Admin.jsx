@@ -93,14 +93,20 @@ const Admin = () => {
 
     setUpdating(id);
     try {
-      const { error } = await supabase
+      // Use .select() to verify the delete was actually applied
+      const { data, error } = await supabase
         .from('appointments')
         .delete()
-        .eq('id', id);
+        .eq('id', id)
+        .select();
 
       if (error) {
         console.error('Error deleting appointment:', error);
         alert('Failed to delete appointment: ' + error.message);
+      } else if (!data || data.length === 0) {
+        // Delete returned no rows - likely RLS policy blocking the delete
+        console.error('Delete returned no data - RLS policy may be blocking deletes');
+        alert('Delete failed: You may not have permission to delete this appointment. Please check Supabase RLS policies.');
       } else {
         alert('Appointment deleted successfully!');
         // Refetch fresh data from database
