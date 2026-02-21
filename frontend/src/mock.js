@@ -49,7 +49,7 @@ export const doctorData = {
     "Transparency and trust",
     "24/7 emergency services"
   ],
-  image: "https://customer-assets.emergentagent.com/job_smile-care-pro-1/artifacts/i2ufqbwc_ChatGPT%20Image%20Feb%2017%2C%202026%2C%2001_23_12%20PM.png"
+  image: "https://customer-assets.emergentagent.com/job_19e5deb8-7455-448c-92eb-cc63265412b4/artifacts/ac3r58s8_ChatGPT%20Image%20Feb%2022%2C%202026%2C%2003_45_53%20AM.png"
 };
 
 export const servicesData = [
