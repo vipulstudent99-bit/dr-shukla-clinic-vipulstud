@@ -222,96 +222,97 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Hero Section - Two Column Layout */}
-      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-10 lg:py-16">
+      {/* Hero Section - Compact Layout */}
+      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-8 lg:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Left Column - Content */}
-            <div className="order-2 lg:order-1">
+            <div className="flex-1 order-2 lg:order-1">
               {/* Specialty Badge */}
-              <div className="inline-flex items-center bg-red-50 text-red-600 px-4 py-2 rounded-full mb-6 border border-red-200">
-                <MapPin className="w-4 h-4 mr-2" />
-                <span className="text-sm font-medium">DENTAL CLINIC IN NALASOPARA</span>
+              <div className="inline-flex items-center bg-red-50 text-red-600 px-3 py-1.5 rounded-full mb-4 border border-red-200">
+                <MapPin className="w-3 h-3 mr-1.5" />
+                <span className="text-xs font-medium">DENTAL CLINIC IN NALASOPARA</span>
               </div>
 
               {/* Clinic Name */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-2">
-                Dr Shukla
-              </h1>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4">
-                Dental Clinic
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E3A5F] mb-1">
+                Dr Shukla <span className="text-red-600">Dental Clinic</span>
               </h1>
 
               {/* Tagline */}
-              <p className="text-lg text-gray-600 italic mb-6">
+              <p className="text-base text-gray-600 italic mb-4">
                 "Restoring Smiles... Building Confidence"
               </p>
 
               {/* Doctor Info */}
-              <div className="mb-6">
-                <p className="text-xl font-semibold text-[#1E3A5F]">{doctorData.name}</p>
-                <p className="text-gray-600">{doctorData.qualifications} • {doctorData.registration}</p>
+              <div className="mb-4">
+                <p className="text-lg font-semibold text-[#1E3A5F]">{doctorData.name}</p>
+                <p className="text-sm text-gray-600">{doctorData.qualifications} • {doctorData.registration}</p>
               </div>
 
               {/* Address */}
-              <div className="flex items-start text-gray-600 mb-6">
-                <MapPin className="w-5 h-5 mr-2 mt-0.5 text-red-500 flex-shrink-0" />
-                <p className="text-sm">{clinicData.location.fullAddress}</p>
+              <div className="flex items-start text-gray-600 mb-4">
+                <MapPin className="w-4 h-4 mr-2 mt-0.5 text-red-500 flex-shrink-0" />
+                <p className="text-xs leading-relaxed">{clinicData.location.fullAddress}</p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <Button onClick={handleCallNow} className="bg-red-50 hover:bg-red-100 text-red-600 border-2 border-red-600 font-semibold px-6">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call: {clinicData.contact.phone}
+              <div className="flex flex-wrap gap-2">
+                <Button onClick={() => setIsAppointmentModalOpen(true)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 h-9 text-sm">
+                  <CalendarIcon className="w-4 h-4 mr-1.5" />
+                  Book Appointment
                 </Button>
-                <Button onClick={handleWhatsApp} className="bg-[#1E3A5F] hover:bg-[#2A5A7F] text-white font-semibold px-6">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp Us
+                <Button onClick={handleCallNow} variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 font-semibold px-4 h-9 text-sm">
+                  <Phone className="w-4 h-4 mr-1.5" />
+                  Call Now
+                </Button>
+                <Button onClick={handleWhatsApp} variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 font-semibold px-4 h-9 text-sm">
+                  <MessageCircle className="w-4 h-4 mr-1.5" />
+                  WhatsApp
                 </Button>
               </div>
             </div>
 
-            {/* Right Column - Doctor Image */}
-            <div className="order-1 lg:order-2 relative">
+            {/* Right Column - Doctor Image (Square, Smaller) */}
+            <div className="order-1 lg:order-2 flex-shrink-0">
               <div className="relative">
                 <img 
                   src={doctorData.image} 
                   alt="Dr. Yogendra R. Shukla - Best Dentist in Nalasopara"
-                  className="rounded-2xl w-full max-w-md mx-auto lg:max-w-none h-auto object-cover shadow-xl border-4 border-white"
+                  className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-2xl object-cover object-top shadow-xl border-4 border-white"
                 />
                 {/* Google Rating Badge */}
-                <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-lg px-4 py-3 border border-gray-200">
-                  <div className="flex items-center gap-1 mb-1">
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-lg px-3 py-2 border border-gray-200">
+                  <div className="flex items-center gap-0.5 justify-center">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-sm font-semibold text-gray-800">{clinicData.googleRating.stars} · {clinicData.googleRating.reviews}+ Google Reviews</p>
+                  <p className="text-xs font-semibold text-gray-800 text-center whitespace-nowrap">{clinicData.googleRating.stars} · {clinicData.googleRating.reviews}+ Reviews</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-gray-200">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4 mt-8 pt-6 border-t border-gray-300">
             <div className="text-center">
-              <p className="text-3xl font-bold text-red-600">18+</p>
-              <p className="text-sm text-gray-600">Years Experience</p>
+              <p className="text-xl sm:text-2xl font-bold text-red-600">18+</p>
+              <p className="text-xs text-gray-600">Years Exp.</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-red-600 flex items-center justify-center">
-                {clinicData.googleRating.stars}<Star className="w-5 h-5 fill-yellow-400 text-yellow-400 ml-1" />
+              <p className="text-xl sm:text-2xl font-bold text-red-600 flex items-center justify-center">
+                {clinicData.googleRating.stars}<Star className="w-4 h-4 fill-yellow-400 text-yellow-400 ml-0.5" />
               </p>
-              <p className="text-sm text-gray-600">Google Rating</p>
+              <p className="text-xs text-gray-600">Rating</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-red-600">{clinicData.googleRating.reviews}+</p>
-              <p className="text-sm text-gray-600">Patient Reviews</p>
+              <p className="text-xl sm:text-2xl font-bold text-red-600">{clinicData.googleRating.reviews}+</p>
+              <p className="text-xs text-gray-600">Reviews</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-red-600">365</p>
-              <p className="text-sm text-gray-600">Days Open</p>
+              <p className="text-xl sm:text-2xl font-bold text-red-600">365</p>
+              <p className="text-xs text-gray-600">Days Open</p>
             </div>
           </div>
         </div>
