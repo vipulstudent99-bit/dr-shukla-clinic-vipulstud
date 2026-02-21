@@ -171,9 +171,9 @@ const Home = () => {
 
             {/* Desktop CTA Button */}
             <div className="hidden lg:block">
-              <Button onClick={handleCallNow} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now
+              <Button onClick={() => setIsAppointmentModalOpen(true)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5">
+                <CalendarIcon className="w-4 h-4 mr-2" />
+                Book Appointment
               </Button>
             </div>
 
@@ -200,15 +200,21 @@ const Home = () => {
                     {link.label}
                   </button>
                 ))}
-                <div className="pt-3 flex gap-2">
-                  <Button onClick={handleCallNow} size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold flex-1">
-                    <Phone className="w-4 h-4 mr-1" />
-                    Call
+                <div className="pt-3 flex flex-col gap-2">
+                  <Button onClick={() => { setIsAppointmentModalOpen(true); setIsMobileMenuOpen(false); }} size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold w-full">
+                    <CalendarIcon className="w-4 h-4 mr-1" />
+                    Book Appointment
                   </Button>
-                  <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 flex-1">
-                    <MessageCircle className="w-4 h-4 mr-1" />
-                    WhatsApp
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button onClick={handleCallNow} size="sm" variant="outline" className="border-gray-400 text-gray-700 hover:bg-gray-50 flex-1">
+                      <Phone className="w-4 h-4 mr-1" />
+                      Call
+                    </Button>
+                    <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 flex-1">
+                      <MessageCircle className="w-4 h-4 mr-1" />
+                      WhatsApp
+                    </Button>
+                  </div>
                 </div>
               </nav>
             </div>
