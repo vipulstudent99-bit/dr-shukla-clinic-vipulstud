@@ -100,7 +100,7 @@ const Admin = () => {
     }
   };
 
-  const fetchAppointments = async () => {
+  const fetchAppointments = useCallback(async () => {
     if (!session) return;
     
     setLoading(true);
@@ -122,7 +122,7 @@ const Admin = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [session]);
 
   const handleUpdateStatus = async (id, newStatus) => {
     setUpdating(id);
