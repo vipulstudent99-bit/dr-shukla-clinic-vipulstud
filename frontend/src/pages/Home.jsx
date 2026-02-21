@@ -238,22 +238,22 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Our Services</h2>
+            <p className="text-[#64748B] max-w-2xl mx-auto">
               Comprehensive dental care services delivered with professional expertise and modern technology
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {servicesData.map((service) => (
-              <Card key={service.id} className="border-gray-200 hover:shadow-lg transition-shadow">
+              <Card key={service.id} className="border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl bg-white">
                 <CardHeader>
-                  <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-[#1E3A5F]">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                  <p className="text-[#64748B] leading-relaxed">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -265,16 +265,16 @@ const Home = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Why Choose Us</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChooseUsData.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
+              <div key={index} className="text-center p-6 rounded-2xl hover:bg-[#F8FAFC] transition-all">
+                <div className="bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <div className="w-8 h-8 bg-white rounded-full"></div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <h3 className="text-lg font-semibold text-[#1E3A5F] mb-2">{item.title}</h3>
+                <p className="text-[#64748B]">{item.description}</p>
               </div>
             ))}
           </div>
@@ -282,25 +282,25 @@ const Home = () => {
       </section>
 
       {/* Patient Reviews Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Patient Reviews</h2>
-            <p className="text-gray-600">What our patients say about their experience</p>
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Patient Reviews</h2>
+            <p className="text-[#64748B]">What our patients say about their experience</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviewsData.map((review) => (
-              <Card key={review.id} className="border-gray-200">
+              <Card key={review.id} className="border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl bg-white">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-3">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
                   <p className="text-gray-700 mb-4 leading-relaxed">{review.review}</p>
                   <div className="border-t pt-3">
-                    <p className="font-semibold text-gray-900">{review.name}</p>
-                    <p className="text-sm text-gray-500">{review.date}</p>
+                    <p className="font-semibold text-[#1E3A5F]">{review.name}</p>
+                    <p className="text-sm text-[#64748B]">{review.date}</p>
                   </div>
                 </CardContent>
               </Card>
