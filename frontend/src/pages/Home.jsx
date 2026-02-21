@@ -187,44 +187,45 @@ const Home = () => {
             <div>
               <img 
                 src={doctorData.image} 
-                alt={doctorData.name}
-                className="rounded-lg w-full h-auto object-cover"
+                alt="Dr. Yogendra R. Shukla - Best Dentist in Nalasopara, Palghar"
+                className="rounded-2xl w-full h-auto object-cover shadow-lg"
+                loading="lazy"
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">About {doctorData.name}</h2>
+              <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">About {doctorData.name}</h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 {doctorData.about}
               </p>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Advanced Training & Certifications:</h3>
+                  <h3 className="text-xl font-semibold text-[#1E3A5F] mb-3">Advanced Training & Certifications:</h3>
                   <ul className="space-y-2">
                     {doctorData.advancedTraining.map((item, index) => (
                       <li key={index} className="text-gray-700 flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
+                        <span className="text-[#0EA5A4] mr-2">•</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Specialized In:</h3>
+                  <h3 className="text-xl font-semibold text-[#1E3A5F] mb-3">Specialized In:</h3>
                   <ul className="space-y-2">
                     {doctorData.expertise.map((item, index) => (
                       <li key={index} className="text-gray-700 flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
+                        <span className="text-[#0EA5A4] mr-2">•</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Known For:</h3>
+                <div className="bg-gradient-to-br from-[#F8FAFC] to-[#E0F2F1] p-6 rounded-xl border border-[#0EA5A4]/20">
+                  <h3 className="text-xl font-semibold text-[#1E3A5F] mb-3">Known For:</h3>
                   <ul className="space-y-2">
                     {doctorData.knownFor.map((item, index) => (
                       <li key={index} className="text-gray-700 flex items-start">
-                        <span className="text-blue-600 mr-2">✓</span>
+                        <span className="text-[#16A34A] mr-2 font-bold">✓</span>
                         {item}
                       </li>
                     ))}
