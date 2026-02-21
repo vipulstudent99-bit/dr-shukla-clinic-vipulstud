@@ -319,7 +319,7 @@ const Home = () => {
       </section>
 
       {/* About Doctor Section */}
-      <section id="about" className="pt-24 pb-16 bg-white">
+      <section id="about" className="pt-32 pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
