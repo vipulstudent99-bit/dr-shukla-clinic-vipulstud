@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Clock, Star, ChevronDown } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, Star, Calendar as CalendarIcon } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
+import { Calendar } from '../components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Label } from '../components/ui/label';
 import { toast } from 'sonner';
+import { format } from 'date-fns';
 import {
   clinicData,
   doctorData,
@@ -17,23 +23,52 @@ import {
 } from '../mock';
 
 const Home = () => {
-  const [formData, setFormData] = useState({
-    name: '',
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [appointmentDate, setAppointmentDate] = useState();
+  const [appointmentData, setAppointmentData] = useState({
+    patient_name: '',
     phone: '',
+    appointment_time: '',
     message: ''
   });
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
+  const timeSlots = [
+    '9:00 AM',
+    '9:30 AM',
+    '10:00 AM',
+    '10:30 AM',
+    '11:00 AM',
+    '11:30 AM',
+    '12:00 PM',
+    '12:30 PM',
+    '6:00 PM',
+    '6:30 PM',
+    '7:00 PM',
+    '7:30 PM',
+    '8:00 PM',
+    '8:30 PM',
+    '9:00 PM',
+    '9:30 PM',
+    '10:00 PM',
+    '10:30 PM',
+    '11:00 PM'
+  ];
+
+  const handleAppointmentInputChange = (e) => {
+    setAppointmentData({
+      ...appointmentData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleAppointmentSubmit = (e) => {
     e.preventDefault();
-    toast.success('Thank you! We will contact you soon.');
-    setFormData({ name: '', phone: '', message: '' });
+    // Submission logic will be added later
+    console.log('Appointment data:', {
+      ...appointmentData,
+      appointment_date: appointmentDate
+    });
+    toast.success('Appointment booking feature coming soon!');
   };
 
   const handleCallNow = () => {
