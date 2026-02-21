@@ -54,13 +54,20 @@ const Admin = () => {
     setLoginError('');
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
         password,
       });
 
       if (error) {
-        setLoginError(error.message);
+        // Handle common Supabase auth errors with user-friendly messages
+        if (error.message.includes('Invalid login credentials')) {
+          setLoginError('Invalid email or password. Please try again.');
+        } else if (error.message.includes('Email not confirmed')) {
+          setLoginError('Please verify your email before logging in.');
+        } else {
+          setLoginError(error.message);
+        }
       } else {
         // Session will be set by onAuthStateChange listener
         setEmail('');
@@ -68,7 +75,7 @@ const Admin = () => {
       }
     } catch (err) {
       console.error('Login error:', err);
-      setLoginError('An unexpected error occurred. Please try again.');
+      setLoginError('Unable to connect. Please check your internet connection.');
     } finally {
       setLoginLoading(false);
     }
