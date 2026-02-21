@@ -119,7 +119,7 @@ const Home = () => {
   };
 
   const handleCallNow = () => {
-    window.location.href = `tel:+91${clinicData.contact.phone.replace(/\s/g, '')}`;
+    window.location.href = `tel:${clinicData.contact.phone.replace(/\s/g, '')}`;
   };
 
   const handleWhatsApp = () => {
