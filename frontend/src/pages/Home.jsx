@@ -357,68 +357,115 @@ const Home = () => {
       <section id="contact" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-600">Visit us or get in touch for appointments and consultations</p>
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Contact Us</h2>
+            <p className="text-[#64748B]">Visit us or get in touch for appointments and consultations</p>
           </div>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Contact Information */}
             <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Clinic Information</h3>
+              <div className="space-y-4 bg-[#F8FAFC] p-8 rounded-2xl">
+                <h3 className="text-xl font-semibold text-[#1E3A5F] mb-4">Clinic Information</h3>
                 <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-[#0EA5A4] mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Address</p>
-                    <p className="text-gray-600">{clinicData.location.fullAddress}</p>
+                    <p className="font-medium text-[#1E3A5F]">Address</p>
+                    <p className="text-[#64748B]">{clinicData.location.fullAddress}</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-[#0EA5A4] mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Phone</p>
-                    <p className="text-gray-600">+91 {clinicData.contact.phone}</p>
+                    <p className="font-medium text-[#1E3A5F]">Phone</p>
+                    <a href={`tel:+91${clinicData.contact.phone.replace(/\s/g, '')}`} className="text-[#0EA5A4] hover:text-[#16A34A] font-semibold">
+                      +91 {clinicData.contact.phone}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-[#0EA5A4] mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Email</p>
-                    <p className="text-gray-600">{clinicData.contact.email}</p>
+                    <p className="font-medium text-[#1E3A5F]">Email</p>
+                    <a href={`mailto:${clinicData.contact.email}`} className="text-[#0EA5A4] hover:text-[#16A34A]">
+                      {clinicData.contact.email}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Clock className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-[#0EA5A4] mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Working Hours</p>
-                    <p className="text-gray-600">{clinicData.workingHours.weekdays}</p>
-                    <p className="text-gray-600">{clinicData.workingHours.sunday}</p>
+                    <p className="font-medium text-[#1E3A5F]">Working Hours</p>
+                    <p className="text-[#64748B]">{clinicData.workingHours.weekdays}</p>
+                    <p className="text-[#64748B]">{clinicData.workingHours.sunday}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center items-center bg-blue-50 rounded-lg p-8">
-                <CalendarIcon className="w-16 h-16 text-blue-600 mb-4" />
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Book Your Appointment</h3>
-                <p className="text-gray-600 text-center mb-6">Schedule your visit online for a convenient experience</p>
-                <Button onClick={() => setIsAppointmentModalOpen(true)} size="lg" className="bg-blue-600 hover:bg-blue-700">
+              <div className="flex flex-col justify-center items-center bg-gradient-to-br from-[#1E3A5F] to-[#0EA5A4] rounded-2xl p-8 text-white shadow-xl">
+                <CalendarIcon className="w-16 h-16 text-white mb-4" />
+                <h3 className="text-2xl font-semibold mb-2">Book Your Appointment</h3>
+                <p className="text-white/90 text-center mb-6">Schedule your visit online for a convenient experience</p>
+                <Button onClick={() => setIsAppointmentModalOpen(true)} size="lg" className="bg-[#16A34A] hover:bg-emerald-700 text-white font-semibold shadow-lg">
                   <CalendarIcon className="w-5 h-5 mr-2" />
                   Book Appointment
                 </Button>
               </div>
             </div>
 
-            {/* Google Map */}
-            <div className="rounded-lg overflow-hidden border border-gray-200">
-              <iframe
-                src={clinicData.mapEmbedUrl}
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Clinic Location"
-              ></iframe>
+            {/* Google Maps - 360 View + Normal Map */}
+            <div className="space-y-4">
+              <div className="flex gap-4 justify-center mb-4">
+                <Button 
+                  onClick={() => document.getElementById('map-360').classList.remove('hidden')} 
+                  className="bg-[#0EA5A4] hover:bg-[#0E8A89]"
+                >
+                  View 360° Clinic Tour
+                </Button>
+                <a 
+                  href="https://maps.app.goo.gl/AzE5C9MbWmDf66LB6" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-[#1E3A5F] text-white rounded-lg hover:bg-[#2A5A7F] transition-colors font-medium"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Open in Google Maps
+                </a>
+              </div>
+
+              {/* 360 Degree View Modal */}
+              <div id="map-360" className="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+                <div className="relative w-full max-w-6xl">
+                  <button 
+                    onClick={() => document.getElementById('map-360').classList.add('hidden')}
+                    className="absolute -top-12 right-0 text-white text-xl bg-red-600 rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-700"
+                  >
+                    ✕
+                  </button>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!4v1771707185575!6m8!1m7!1s7FYG1PBsGrSUguPI-8CKzQ!2m2!1d19.41646530358503!2d72.82765012293994!3f97.53463!4f0!5f0.7820865974627469" 
+                    width="100%" 
+                    height="600" 
+                    style={{border:0}} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-xl"
+                  ></iframe>
+                </div>
+              </div>
+
+              {/* Regular Map */}
+              <div className="rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg">
+                <iframe
+                  src={clinicData.mapEmbedUrl}
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Dr Shukla Dental Clinic Location - Nalasopara, Palghar"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
