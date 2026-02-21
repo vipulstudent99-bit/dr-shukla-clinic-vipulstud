@@ -472,16 +472,16 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-[#1E3A5F] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-xl font-semibold mb-4">{clinicData.name}</h3>
-              <p className="text-gray-400">{clinicData.tagline}</p>
+              <p className="text-white/70">{clinicData.tagline}</p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
-              <div className="space-y-2 text-gray-400">
+              <div className="space-y-2 text-white/70">
                 <p>+91 {clinicData.contact.phone}</p>
                 <p>{clinicData.contact.email}</p>
                 <p>{clinicData.location.area}, {clinicData.location.city}</p>
@@ -489,13 +489,13 @@ const Home = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Hours</h4>
-              <div className="space-y-2 text-gray-400">
+              <div className="space-y-2 text-white/70">
                 <p>{clinicData.workingHours.weekdays}</p>
                 <p>{clinicData.workingHours.sunday}</p>
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <div className="border-t border-white/20 pt-8 text-center text-white/70">
             <p>&copy; 2024 {clinicData.name}. All rights reserved.</p>
           </div>
         </div>
@@ -505,8 +505,8 @@ const Home = () => {
       <Dialog open={isAppointmentModalOpen} onOpenChange={setIsAppointmentModalOpen}>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-gray-900">Book an Appointment</DialogTitle>
-            <DialogDescription className="text-gray-600">
+            <DialogTitle className="text-2xl font-bold text-[#1E3A5F]">Book an Appointment</DialogTitle>
+            <DialogDescription className="text-[#64748B]">
               Schedule your visit with Dr. {doctorData.name}. We'll confirm your appointment shortly.
             </DialogDescription>
           </DialogHeader>
@@ -514,8 +514,8 @@ const Home = () => {
           <form onSubmit={handleAppointmentSubmit} className="space-y-6 mt-4">
             {/* Name Field */}
             <div className="space-y-2">
-              <Label htmlFor="patient_name" className="text-sm font-medium text-gray-900">
-                Full Name <span className="text-red-500">*</span>
+              <Label htmlFor="patient_name" className="text-sm font-medium text-[#1E3A5F]">
+                Full Name <span className="text-[#DC2626]">*</span>
               </Label>
               <Input
                 id="patient_name"
@@ -524,14 +524,14 @@ const Home = () => {
                 onChange={handleAppointmentInputChange}
                 placeholder="Enter your full name"
                 required
-                className="w-full"
+                className="w-full border-gray-300 focus:border-[#0EA5A4] focus:ring-[#0EA5A4]"
               />
             </div>
 
             {/* Phone Field */}
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-sm font-medium text-gray-900">
-                Phone Number <span className="text-red-500">*</span>
+              <Label htmlFor="phone" className="text-sm font-medium text-[#1E3A5F]">
+                Phone Number <span className="text-[#DC2626]">*</span>
               </Label>
               <Input
                 id="phone"
@@ -541,22 +541,22 @@ const Home = () => {
                 onChange={handleAppointmentInputChange}
                 placeholder="Enter your phone number"
                 required
-                className="w-full"
+                className="w-full border-gray-300 focus:border-[#0EA5A4] focus:ring-[#0EA5A4]"
               />
             </div>
 
             {/* Date Picker */}
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-900">
-                Preferred Date <span className="text-red-500">*</span>
+              <Label className="text-sm font-medium text-[#1E3A5F]">
+                Preferred Date <span className="text-[#DC2626]">*</span>
               </Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-full justify-start text-left font-normal"
+                    className="w-full justify-start text-left font-normal border-gray-300 hover:border-[#0EA5A4]"
                   >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4 text-[#0EA5A4]" />
                     {appointmentDate ? format(appointmentDate, 'PPP') : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -574,15 +574,15 @@ const Home = () => {
 
             {/* Time Slot Dropdown */}
             <div className="space-y-2">
-              <Label htmlFor="appointment_time" className="text-sm font-medium text-gray-900">
-                Preferred Time <span className="text-red-500">*</span>
+              <Label htmlFor="appointment_time" className="text-sm font-medium text-[#1E3A5F]">
+                Preferred Time <span className="text-[#DC2626]">*</span>
               </Label>
               <Select
                 value={appointmentData.appointment_time}
                 onValueChange={(value) => setAppointmentData({ ...appointmentData, appointment_time: value })}
                 required
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full border-gray-300 hover:border-[#0EA5A4]">
                   <SelectValue placeholder="Select a time slot" />
                 </SelectTrigger>
                 <SelectContent>
@@ -597,8 +597,8 @@ const Home = () => {
 
             {/* Message Field (Optional) */}
             <div className="space-y-2">
-              <Label htmlFor="message" className="text-sm font-medium text-gray-900">
-                Additional Notes <span className="text-gray-500">(Optional)</span>
+              <Label htmlFor="message" className="text-sm font-medium text-[#1E3A5F]">
+                Additional Notes <span className="text-[#64748B]">(Optional)</span>
               </Label>
               <Textarea
                 id="message"
@@ -607,7 +607,7 @@ const Home = () => {
                 onChange={handleAppointmentInputChange}
                 placeholder="Any specific concerns or questions?"
                 rows={3}
-                className="w-full"
+                className="w-full border-gray-300 focus:border-[#0EA5A4] focus:ring-[#0EA5A4]"
               />
             </div>
 
@@ -617,14 +617,14 @@ const Home = () => {
                 type="button"
                 variant="outline"
                 onClick={() => setIsAppointmentModalOpen(false)}
-                className="flex-1"
+                className="flex-1 border-gray-300"
                 disabled={isSubmitting}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-blue-600 hover:bg-blue-700"
+                className="flex-1 bg-[#16A34A] hover:bg-emerald-700 text-white font-semibold"
                 disabled={!appointmentDate || !appointmentData.appointment_time || isSubmitting}
               >
                 {isSubmitting ? 'Booking...' : 'Book Appointment'}
