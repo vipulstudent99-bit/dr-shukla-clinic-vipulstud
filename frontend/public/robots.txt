@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://smile-care-pro-1.preview.emergentagent.com/sitemap.xml
+Sitemap: https://clinic-appointment-6.preview.emergentagent.com/sitemap.xml
