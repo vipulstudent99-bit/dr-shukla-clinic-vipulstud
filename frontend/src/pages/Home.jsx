@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Label } from '../components/ui/label';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
+import { supabase } from '../supabaseClient';
 import {
   clinicData,
   doctorData,
@@ -69,6 +70,37 @@ const Home = () => {
       appointment_date: appointmentDate
     });
     toast.success('Appointment booking feature coming soon!');
+  };
+
+  // Temporary test function for Supabase
+  const handleTestSupabaseInsert = async () => {
+    try {
+      const testData = {
+        patient_name: 'Test User',
+        phone: '9999999999',
+        appointment_date: new Date().toISOString().split('T')[0], // Today's date in YYYY-MM-DD format
+        appointment_time: '10:00 AM',
+        message: 'Test Insert'
+      };
+
+      console.log('Attempting to insert test data:', testData);
+
+      const { data, error } = await supabase
+        .from('appointments')
+        .insert([testData])
+        .select();
+
+      if (error) {
+        console.error('Insert error:', error);
+        alert('Insert Failed: ' + error.message);
+      } else {
+        console.log('Insert success:', data);
+        alert('Insert Success');
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      alert('Insert Failed: ' + err.message);
+    }
   };
 
   const handleCallNow = () => {
@@ -410,6 +442,18 @@ const Home = () => {
               </div>
             </div>
           </div>
+          
+          {/* Temporary Test Button */}
+          <div className="border-t border-gray-800 pt-6 mb-6 text-center">
+            <Button 
+              onClick={handleTestSupabaseInsert}
+              variant="outline"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"
+            >
+              Test Supabase Insert
+            </Button>
+          </div>
+
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2024 {clinicData.name}. All rights reserved.</p>
           </div>
