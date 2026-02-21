@@ -535,22 +535,13 @@ const Home = () => {
 
             {/* Google Maps - 360 View + Normal Map */}
             <div className="space-y-4">
-              <div className="flex gap-4 justify-center mb-4">
+              <div className="flex justify-center mb-4">
                 <Button 
                   onClick={() => document.getElementById('map-360').classList.remove('hidden')} 
                   className="bg-[#0EA5A4] hover:bg-[#0E8A89]"
                 >
                   View 360° Clinic Tour
                 </Button>
-                <a 
-                  href="https://maps.app.goo.gl/AzE5C9MbWmDf66LB6" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-[#1E3A5F] text-white rounded-lg hover:bg-[#2A5A7F] transition-colors font-medium"
-                >
-                  <MapPin className="w-4 h-4 mr-2" />
-                  Open in Google Maps
-                </a>
               </div>
 
               {/* 360 Degree View Modal */}
