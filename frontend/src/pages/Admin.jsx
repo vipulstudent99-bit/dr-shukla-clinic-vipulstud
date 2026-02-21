@@ -41,6 +41,30 @@ const Admin = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  const fetchAppointments = useCallback(async () => {
+    if (!session) return;
+    
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('appointments')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching appointments:', error);
+        alert('Failed to fetch appointments: ' + error.message);
+      } else {
+        setAppointments(data || []);
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      alert('An error occurred while fetching appointments.');
+    } finally {
+      setLoading(false);
+    }
+  }, [session]);
+
   // Fetch appointments when authenticated
   useEffect(() => {
     if (session) {
@@ -99,30 +123,6 @@ const Admin = () => {
       console.error('Logout error:', err);
     }
   };
-
-  const fetchAppointments = useCallback(async () => {
-    if (!session) return;
-    
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from('appointments')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching appointments:', error);
-        alert('Failed to fetch appointments: ' + error.message);
-      } else {
-        setAppointments(data || []);
-      }
-    } catch (err) {
-      console.error('Unexpected error:', err);
-      alert('An error occurred while fetching appointments.');
-    } finally {
-      setLoading(false);
-    }
-  }, [session]);
 
   const handleUpdateStatus = async (id, newStatus) => {
     setUpdating(id);
