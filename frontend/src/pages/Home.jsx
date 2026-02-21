@@ -127,7 +127,11 @@ const Home = () => {
               {clinicData.location.area}, {clinicData.location.city}
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button onClick={handleCallNow} size="lg" className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={() => setIsAppointmentModalOpen(true)} size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <CalendarIcon className="w-5 h-5 mr-2" />
+                Book Appointment
+              </Button>
+              <Button onClick={handleCallNow} size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                 <Phone className="w-5 h-5 mr-2" />
                 Call Now
               </Button>
