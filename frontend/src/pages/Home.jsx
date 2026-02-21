@@ -595,9 +595,8 @@ const Home = () => {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <div className="space-y-2 text-white/70">
-                <p>+91 {clinicData.contact.phone}</p>
-                <p>{clinicData.contact.email}</p>
-                <p>{clinicData.location.area}, {clinicData.location.city}</p>
+                <p>{clinicData.contact.phone}</p>
+                <p className="text-sm leading-relaxed">{clinicData.location.fullAddress}</p>
               </div>
             </div>
             <div>
@@ -608,8 +607,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8 text-center text-white/70">
-            <p>&copy; 2024 {clinicData.name}. All rights reserved.</p>
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="text-white/90 font-medium">Digital Structure AI</p>
+            <p className="text-white/50 text-sm mt-1">Designed & Developed with Excellence</p>
           </div>
         </div>
       </footer>
