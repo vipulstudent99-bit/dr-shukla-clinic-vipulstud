@@ -157,12 +157,12 @@ const Home = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-gray-700 hover:text-[#1E3A5F] font-medium text-sm transition-colors"
+                  className="text-gray-700 hover:text-[#1E3A5F] font-medium text-sm transition-colors whitespace-nowrap"
                 >
                   {link.label}
                 </button>
