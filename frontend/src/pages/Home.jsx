@@ -320,114 +320,67 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-600">Get in touch for appointments and consultations</p>
+            <p className="text-gray-600">Visit us or get in touch for appointments and consultations</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <CardTitle>Send Us a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Name
-                    </label>
-                    <Input 
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number
-                    </label>
-                    <Input 
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Your phone number"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
-                    </label>
-                    <Textarea 
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Your message"
-                      rows={4}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                    Submit
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
+          <div className="max-w-4xl mx-auto">
             {/* Contact Information */}
-            <div className="space-y-6">
-              <div>
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Clinic Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Address</p>
-                      <p className="text-gray-600">{clinicData.location.fullAddress}</p>
-                    </div>
+                <div className="flex items-start">
+                  <MapPin className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-gray-900">Address</p>
+                    <p className="text-gray-600">{clinicData.location.fullAddress}</p>
                   </div>
-                  <div className="flex items-start">
-                    <Phone className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Phone</p>
-                      <p className="text-gray-600">+91 {clinicData.contact.phone}</p>
-                    </div>
+                </div>
+                <div className="flex items-start">
+                  <Phone className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-gray-900">Phone</p>
+                    <p className="text-gray-600">+91 {clinicData.contact.phone}</p>
                   </div>
-                  <div className="flex items-start">
-                    <Mail className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Email</p>
-                      <p className="text-gray-600">{clinicData.contact.email}</p>
-                    </div>
+                </div>
+                <div className="flex items-start">
+                  <Mail className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-gray-900">Email</p>
+                    <p className="text-gray-600">{clinicData.contact.email}</p>
                   </div>
-                  <div className="flex items-start">
-                    <Clock className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Working Hours</p>
-                      <p className="text-gray-600">{clinicData.workingHours.weekdays}</p>
-                      <p className="text-gray-600">{clinicData.workingHours.sunday}</p>
-                    </div>
+                </div>
+                <div className="flex items-start">
+                  <Clock className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-gray-900">Working Hours</p>
+                    <p className="text-gray-600">{clinicData.workingHours.weekdays}</p>
+                    <p className="text-gray-600">{clinicData.workingHours.sunday}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Google Map */}
-              <div className="rounded-lg overflow-hidden border border-gray-200">
-                <iframe
-                  src={clinicData.mapEmbedUrl}
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Clinic Location"
-                ></iframe>
+              <div className="flex flex-col justify-center items-center bg-blue-50 rounded-lg p-8">
+                <CalendarIcon className="w-16 h-16 text-blue-600 mb-4" />
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">Book Your Appointment</h3>
+                <p className="text-gray-600 text-center mb-6">Schedule your visit online for a convenient experience</p>
+                <Button onClick={() => setIsAppointmentModalOpen(true)} size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  <CalendarIcon className="w-5 h-5 mr-2" />
+                  Book Appointment
+                </Button>
               </div>
+            </div>
+
+            {/* Google Map */}
+            <div className="rounded-lg overflow-hidden border border-gray-200">
+              <iframe
+                src={clinicData.mapEmbedUrl}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Clinic Location"
+              ></iframe>
             </div>
           </div>
         </div>
