@@ -313,16 +313,17 @@ const Home = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Clinic Gallery</h2>
-            <p className="text-gray-600">A glimpse of our modern facility</p>
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Clinic Gallery</h2>
+            <p className="text-[#64748B]">A glimpse of our modern facility in Nalasopara</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {galleryData.map((image) => (
-              <div key={image.id} className="overflow-hidden rounded-lg border border-gray-200">
+              <div key={image.id} className="overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-[#0EA5A4] transition-all shadow-md hover:shadow-xl">
                 <img 
                   src={image.url} 
-                  alt={image.alt}
+                  alt={`Dr Shukla Dental Clinic ${image.alt} - Best Dental Clinic in Nalasopara`}
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -331,19 +332,19 @@ const Home = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F8FAFC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600">Common questions about dental treatments and our services</p>
+            <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Frequently Asked Questions</h2>
+            <p className="text-[#64748B]">Common questions about dental treatments and our services</p>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
             {faqData.map((faq) => (
-              <AccordionItem key={faq.id} value={`item-${faq.id}`} className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-blue-600">
+              <AccordionItem key={faq.id} value={`item-${faq.id}`} className="bg-white border-2 border-gray-200 rounded-xl px-6 hover:border-[#0EA5A4] transition-all">
+                <AccordionTrigger className="text-left font-semibold text-[#1E3A5F] hover:text-[#0EA5A4]">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">
+                <AccordionContent className="text-[#64748B] leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
