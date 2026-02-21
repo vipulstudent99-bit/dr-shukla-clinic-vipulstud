@@ -127,21 +127,25 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      {/* Header - Compact */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">{clinicData.name}</h2>
-              <p className="text-sm text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
+              <h2 className="text-base font-semibold text-gray-900">{clinicData.name}</h2>
+              <p className="text-xs text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
             </div>
-            <div className="flex gap-3">
-              <Button onClick={handleCallNow} className="bg-blue-600 hover:bg-blue-700">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now
+            <div className="flex gap-2">
+              <Button onClick={() => setIsAppointmentModalOpen(true)} size="sm" className="bg-emerald-600 hover:bg-emerald-700 font-semibold px-4">
+                <CalendarIcon className="w-4 h-4 mr-1" />
+                Book Now
               </Button>
-              <Button onClick={handleWhatsApp} variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-                <MessageCircle className="w-4 h-4 mr-2" />
+              <Button onClick={handleCallNow} size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                <Phone className="w-3 h-3 mr-1" />
+                Call
+              </Button>
+              <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
+                <MessageCircle className="w-3 h-3 mr-1" />
                 WhatsApp
               </Button>
             </div>
@@ -149,43 +153,29 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      {/* Hero Section - Premium Gradient */}
+      <section className="relative bg-gradient-to-br from-[#1E3A5F] via-[#2A5A7F] to-[#0EA5A4] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              {clinicData.name}
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Dental Clinic in Nalasopara | Dr Shukla Dental Clinic
             </h1>
-            <p className="text-xl text-gray-700 mb-2">
+            <p className="text-lg text-white/90 mb-2">
               {doctorData.name}, {doctorData.qualifications}
             </p>
-            <p className="text-md text-gray-600 mb-2">
+            <p className="text-sm text-white/80 mb-1">
               {doctorData.registration}
             </p>
-            <p className="text-lg text-gray-600 mb-2">
+            <p className="text-base text-white/90 mb-1">
               {doctorData.experience} of Clinical Experience | {doctorData.since}
             </p>
-            <p className="text-lg text-gray-600 mb-2">
+            <p className="text-base text-white/90 mb-1">
               ⭐ {clinicData.googleRating.stars} Google Rating from {clinicData.googleRating.reviews}+ Reviews
             </p>
-            <p className="text-lg text-gray-600 mb-8">
-              <MapPin className="w-5 h-5 inline mr-1" />
+            <p className="text-base text-white/90">
+              <MapPin className="w-4 h-4 inline mr-1" />
               {clinicData.location.area}, {clinicData.location.city}
             </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Button onClick={() => setIsAppointmentModalOpen(true)} size="lg" className="bg-blue-600 hover:bg-blue-700">
-                <CalendarIcon className="w-5 h-5 mr-2" />
-                Book Appointment
-              </Button>
-              <Button onClick={handleCallNow} size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now
-              </Button>
-              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
-              </Button>
-            </div>
           </div>
         </div>
       </section>
