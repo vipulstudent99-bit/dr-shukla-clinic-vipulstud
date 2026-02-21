@@ -126,79 +126,187 @@ const Home = () => {
     window.open(`https://wa.me/${clinicData.contact.whatsapp}`, '_blank');
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const navLinks = [
+    { label: 'About', id: 'about' },
+    { label: 'Services', id: 'services' },
+    { label: 'Why Us', id: 'why-us' },
+    { label: 'Reviews', id: 'reviews' },
+    { label: 'Gallery', id: 'gallery' },
+    { label: 'FAQ', id: 'faq' },
+    { label: 'Contact', id: 'contact' }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - Compact */}
+      {/* Header with Navigation */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
-          {/* Mobile Layout: Stacked vertically, centered */}
-          <div className="flex flex-col items-center gap-2 sm:hidden">
-            <div className="text-center">
-              <h2 className="text-sm font-semibold text-gray-900">{clinicData.name}</h2>
-              <p className="text-xs text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo / Clinic Name */}
+            <div className="flex-shrink-0">
+              <h2 className="text-lg font-bold text-[#1E3A5F]">{clinicData.name}</h2>
+              <p className="text-xs text-gray-500">{clinicData.location.area}, {clinicData.location.city}</p>
             </div>
-            <div className="flex gap-1.5">
-              <Button onClick={() => setIsAppointmentModalOpen(true)} size="sm" className="bg-emerald-600 hover:bg-emerald-700 font-semibold text-xs px-2.5 h-8">
-                <CalendarIcon className="w-3 h-3 mr-1" />
-                Book
-              </Button>
-              <Button onClick={handleCallNow} size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 text-xs px-2.5 h-8">
-                <Phone className="w-3 h-3 mr-1" />
-                Call
-              </Button>
-              <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 text-xs px-2.5 h-8">
-                <MessageCircle className="w-3 h-3 mr-1" />
-                WhatsApp
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-6">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-gray-700 hover:text-[#1E3A5F] font-medium text-sm transition-colors"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* Desktop CTA Button */}
+            <div className="hidden lg:block">
+              <Button onClick={handleCallNow} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5">
+                <Phone className="w-4 h-4 mr-2" />
+                Call Now
               </Button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-          {/* Desktop Layout: Side by side */}
-          <div className="hidden sm:flex justify-between items-center">
-            <div>
-              <h2 className="text-base font-semibold text-gray-900">{clinicData.name}</h2>
-              <p className="text-xs text-gray-600">{clinicData.location.area}, {clinicData.location.city}</p>
+
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="lg:hidden border-t border-gray-200 py-4">
+              <nav className="flex flex-col space-y-3">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollToSection(link.id)}
+                    className="text-gray-700 hover:text-[#1E3A5F] font-medium text-sm py-2 text-left"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <div className="pt-3 flex gap-2">
+                  <Button onClick={handleCallNow} size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold flex-1">
+                    <Phone className="w-4 h-4 mr-1" />
+                    Call
+                  </Button>
+                  <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 flex-1">
+                    <MessageCircle className="w-4 h-4 mr-1" />
+                    WhatsApp
+                  </Button>
+                </div>
+              </nav>
             </div>
-            <div className="flex gap-2">
-              <Button onClick={() => setIsAppointmentModalOpen(true)} size="sm" className="bg-emerald-600 hover:bg-emerald-700 font-semibold px-4">
-                <CalendarIcon className="w-4 h-4 mr-1" />
-                Book Now
-              </Button>
-              <Button onClick={handleCallNow} size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <Phone className="w-3 h-3 mr-1" />
-                Call
-              </Button>
-              <Button onClick={handleWhatsApp} size="sm" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-                <MessageCircle className="w-3 h-3 mr-1" />
-                WhatsApp
-              </Button>
-            </div>
-          </div>
+          )}
         </div>
       </header>
 
-      {/* Hero Section - Premium Gradient */}
-      <section className="relative bg-gradient-to-br from-[#1E3A5F] via-[#2A5A7F] to-[#0EA5A4] py-12">
+      {/* Hero Section - Two Column Layout */}
+      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-10 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Dental Clinic in Nalasopara | Dr Shukla Dental Clinic
-            </h1>
-            <p className="text-lg text-white/90 mb-2">
-              {doctorData.name}, {doctorData.qualifications}
-            </p>
-            <p className="text-sm text-white/80 mb-1">
-              {doctorData.registration}
-            </p>
-            <p className="text-base text-white/90 mb-1">
-              {doctorData.experience} of Clinical Experience | {doctorData.since}
-            </p>
-            <p className="text-base text-white/90 mb-1">
-              ⭐ {clinicData.googleRating.stars} Google Rating from {clinicData.googleRating.reviews}+ Reviews
-            </p>
-            <p className="text-base text-white/90">
-              <MapPin className="w-4 h-4 inline mr-1" />
-              {clinicData.location.area}, {clinicData.location.city}
-            </p>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Column - Content */}
+            <div className="order-2 lg:order-1">
+              {/* Specialty Badge */}
+              <div className="inline-flex items-center bg-red-50 text-red-600 px-4 py-2 rounded-full mb-6 border border-red-200">
+                <MapPin className="w-4 h-4 mr-2" />
+                <span className="text-sm font-medium">DENTAL CLINIC IN NALASOPARA</span>
+              </div>
+
+              {/* Clinic Name */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-2">
+                Dr Shukla
+              </h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4">
+                Dental Clinic
+              </h1>
+
+              {/* Tagline */}
+              <p className="text-lg text-gray-600 italic mb-6">
+                "Restoring Smiles... Building Confidence"
+              </p>
+
+              {/* Doctor Info */}
+              <div className="mb-6">
+                <p className="text-xl font-semibold text-[#1E3A5F]">{doctorData.name}</p>
+                <p className="text-gray-600">{doctorData.qualifications} • {doctorData.registration}</p>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start text-gray-600 mb-6">
+                <MapPin className="w-5 h-5 mr-2 mt-0.5 text-red-500 flex-shrink-0" />
+                <p className="text-sm">{clinicData.location.fullAddress}</p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                <Button onClick={handleCallNow} className="bg-red-50 hover:bg-red-100 text-red-600 border-2 border-red-600 font-semibold px-6">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call: {clinicData.contact.phone}
+                </Button>
+                <Button onClick={handleWhatsApp} className="bg-[#1E3A5F] hover:bg-[#2A5A7F] text-white font-semibold px-6">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  WhatsApp Us
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Doctor Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative">
+                <img 
+                  src={doctorData.image} 
+                  alt="Dr. Yogendra R. Shukla - Best Dentist in Nalasopara"
+                  className="rounded-2xl w-full max-w-md mx-auto lg:max-w-none h-auto object-cover shadow-xl border-4 border-white"
+                />
+                {/* Google Rating Badge */}
+                <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-lg px-4 py-3 border border-gray-200">
+                  <div className="flex items-center gap-1 mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm font-semibold text-gray-800">{clinicData.googleRating.stars} · {clinicData.googleRating.reviews}+ Google Reviews</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 pt-8 border-t border-gray-200">
+            <div className="text-center">
+              <p className="text-3xl font-bold text-red-600">18+</p>
+              <p className="text-sm text-gray-600">Years Experience</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-red-600 flex items-center justify-center">
+                {clinicData.googleRating.stars}<Star className="w-5 h-5 fill-yellow-400 text-yellow-400 ml-1" />
+              </p>
+              <p className="text-sm text-gray-600">Google Rating</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-red-600">{clinicData.googleRating.reviews}+</p>
+              <p className="text-sm text-gray-600">Patient Reviews</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-red-600">365</p>
+              <p className="text-sm text-gray-600">Days Open</p>
+            </div>
           </div>
         </div>
       </section>
