@@ -25,6 +25,7 @@ import {
 
 const Home = () => {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [appointmentDate, setAppointmentDate] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [appointmentData, setAppointmentData] = useState({
