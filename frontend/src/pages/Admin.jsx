@@ -46,7 +46,7 @@ const Admin = () => {
     if (session) {
       fetchAppointments();
     }
-  }, [session]);
+  }, [session, fetchAppointments]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
