@@ -537,29 +537,55 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Patient Reviews Section */}
+      {/* Patient Reviews Section - Google Style */}
       <section id="reviews" className="py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">Patient Reviews</h2>
             <p className="text-[#64748B]">What our patients say about their experience</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {reviewsData.map((review) => (
-              <Card key={review.id} className="border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl bg-white">
-                <CardContent className="pt-6">
-                  <div className="flex items-center mb-3">
+              <div key={review.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                {/* Reviewer Info */}
+                <div className="flex items-start gap-3 mb-4">
+                  {/* Profile Circle with Initial */}
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-semibold text-lg">
+                      {review.name.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  
+                  {/* Name and Review Count */}
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-[#1E3A5F] text-base">{review.name}</h4>
+                    <p className="text-xs text-gray-500">{review.reviewCount} review{review.reviewCount > 1 ? 's' : ''}</p>
+                  </div>
+                </div>
+
+                {/* Rating and Date */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex gap-0.5">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-4 leading-relaxed">{review.review}</p>
-                  <div className="border-t pt-3">
-                    <p className="font-semibold text-[#1E3A5F]">{review.name}</p>
-                    <p className="text-sm text-[#64748B]">{review.date}</p>
+                  <span className="text-sm text-gray-500">{review.date}</span>
+                </div>
+
+                {/* Review Text */}
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {review.review}
+                </p>
+
+                {/* Optional Response from Clinic */}
+                {review.hasResponse && (
+                  <div className="bg-[#F8FAFC] border-l-4 border-[#0EA5A4] pl-4 py-3 mt-4">
+                    <p className="text-xs font-semibold text-gray-600 mb-1">Response from the owner</p>
+                    <p className="text-sm text-gray-700">{review.response}</p>
                   </div>
-                </CardContent>
-              </Card>
+                )}
+              </div>
             ))}
           </div>
         </div>
