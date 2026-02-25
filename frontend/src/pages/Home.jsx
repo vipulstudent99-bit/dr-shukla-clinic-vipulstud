@@ -335,37 +335,89 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Social Proof - Compact Review Quotes */}
+      {/* Social Proof - Google Style Review Cards */}
       <section className="py-12 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="border-gray-200 bg-white">
-              <CardContent className="pt-5 pb-5">
-                <p className="text-sm text-gray-700 mb-3">"Had pain in my tooth and finally found a good doctor."</p>
-                <p className="text-xs font-semibold text-gray-600">– Roshan M.</p>
-              </CardContent>
-            </Card>
+            {/* Review 1 */}
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-semibold text-lg">R</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-[#1E3A5F] text-sm">Roshan M.</h4>
+                </div>
+              </div>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                "Had pain in my tooth and finally found a good doctor."
+              </p>
+            </div>
 
-            <Card className="border-gray-200 bg-white">
-              <CardContent className="pt-5 pb-5">
-                <p className="text-sm text-gray-700 mb-3">"Doctor explained all process clearly and waiting time is very less."</p>
-                <p className="text-xs font-semibold text-gray-600">– Arun G.</p>
-              </CardContent>
-            </Card>
+            {/* Review 2 */}
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-semibold text-lg">A</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-[#1E3A5F] text-sm">Arun G.</h4>
+                </div>
+              </div>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                "Doctor explained all process clearly and waiting time is very less."
+              </p>
+            </div>
 
-            <Card className="border-gray-200 bg-white">
-              <CardContent className="pt-5 pb-5">
-                <p className="text-sm text-gray-700 mb-3">"Painless treatment. Clinic very clean."</p>
-                <p className="text-xs font-semibold text-gray-600">– Rasika G.</p>
-              </CardContent>
-            </Card>
+            {/* Review 3 */}
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-semibold text-lg">R</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-[#1E3A5F] text-sm">Rasika G.</h4>
+                </div>
+              </div>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                "Painless treatment. Clinic very clean."
+              </p>
+            </div>
 
-            <Card className="border-gray-200 bg-white">
-              <CardContent className="pt-5 pb-5">
-                <p className="text-sm text-gray-700 mb-3">"Removed tooth safely without any problem."</p>
-                <p className="text-xs font-semibold text-gray-600">– Anil J.</p>
-              </CardContent>
-            </Card>
+            {/* Review 4 */}
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0EA5A4] to-[#16A34A] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-semibold text-lg">A</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-[#1E3A5F] text-sm">Anil J.</h4>
+                </div>
+              </div>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                "Removed tooth safely without any problem."
+              </p>
+            </div>
           </div>
         </div>
       </section>
