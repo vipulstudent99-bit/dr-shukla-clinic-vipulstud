@@ -236,18 +236,18 @@ const Home = () => {
             {/* Left Column - Content */}
             <div className="flex-1 order-2 lg:order-1">
               {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-4 leading-tight">
-                Advanced Dental Implants & Painless Laser Tooth Removal
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-3 leading-tight">
+                Trusted Dental Clinic in Nalasopara
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-base sm:text-lg text-gray-700 font-medium mb-3">
-                18+ Years Experience | 859+ Google Reviews | 4.9⭐ Rating
+              {/* Subheading */}
+              <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 font-medium mb-4 leading-snug">
+                Advanced Implants. Painless Laser Treatment. Complete Dental Care.
               </p>
 
-              {/* Supporting Line */}
-              <p className="text-sm sm:text-base text-gray-600 mb-6">
-                Modern techniques. Clear explanation. Patient-first approach.
+              {/* Stats Line */}
+              <p className="text-sm sm:text-base text-gray-600 font-medium mb-6">
+                18+ Years Experience | 859+ Google Reviews | 4.9⭐ Rating
               </p>
 
               {/* Trust Badges Row */}
