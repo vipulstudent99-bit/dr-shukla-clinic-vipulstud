@@ -151,9 +151,16 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo / Clinic Name */}
-            <div className="flex-shrink-0">
-              <h2 className="text-lg font-bold text-[#1E3A5F]">{clinicData.name}</h2>
-              <p className="text-xs text-gray-500">{clinicData.location.area}, {clinicData.location.city}</p>
+            <div className="flex-shrink-0 flex items-center gap-3">
+              <img 
+                src="/images/logo.png" 
+                alt="Dr Shukla Dental Clinic Logo" 
+                className="h-10 w-10"
+              />
+              <div>
+                <h2 className="text-lg font-bold text-[#1E3A5F]">{clinicData.name}</h2>
+                <p className="text-xs text-gray-500">{clinicData.location.area}, {clinicData.location.city}</p>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
