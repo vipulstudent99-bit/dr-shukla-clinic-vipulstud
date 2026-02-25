@@ -115,38 +115,59 @@ export const whyChooseUsData = [
 export const reviewsData = [
   {
     id: 1,
-    name: "Kousthubh Lele",
-    date: "3 months ago",
+    name: "Brijesh Mourya",
+    reviewCount: 1,
+    date: "a week ago",
     rating: 5,
-    review: "Fantastic Service, best Medical practitioner, affordable."
+    review: "I had my friend's tooth extracted using the laser method at Dr. Shukla's clinic, and it was completely painless. I also really enjoyed the professionalism and care shown during the procedure.",
+    hasResponse: true,
+    response: "Thank you for your kind words!"
   },
   {
     id: 2,
-    name: "Naina Sonar",
-    date: "3 weeks ago",
+    name: "Sameer Ahmad",
+    reviewCount: 2,
+    date: "5 months ago",
     rating: 5,
-    review: "I have removed my teeth from dr shukla's clinic by using laser method and it was completely done without any pain... I must have to say for dental treatment this clinic is completely excellent 👍 Thank you dr Shukla ji..."
+    review: "I had an amazing experience with this doctor. I was nervous about getting my tooth extracted, but the doctor's friendly and caring nature made me feel completely at ease. The extraction was done smoothly without any complications.",
+    hasResponse: false
   },
   {
     id: 3,
-    name: "Nimit Beradiya",
-    date: "4 weeks ago",
+    name: "Naina Sonar",
+    reviewCount: 3,
+    date: "3 weeks ago",
     rating: 5,
-    review: "The best dental experience I've ever had. Very professional, no wait time, and they explained everything clearly. My teeth feel great!"
+    review: "I have removed my teeth from Dr. Shukla's clinic by using laser method and it was completely done without any pain. I must have to say for dental treatment this clinic is completely excellent. Thank you Dr. Shukla ji.",
+    hasResponse: true,
+    response: "Thank you for trusting us with your dental care!"
   },
   {
     id: 4,
-    name: "Ravi Shankar",
-    date: "a month ago",
+    name: "Kousthubh Lele",
+    reviewCount: 12,
+    date: "3 months ago",
     rating: 5,
-    review: "Non pain and good doctor Mr Shukla ji, treatment is giving best in nalasopara"
+    review: "Fantastic service, best medical practitioner, affordable.",
+    hasResponse: false
   },
   {
     id: 5,
+    name: "Ravi Shankar",
+    reviewCount: 5,
+    date: "a month ago",
+    rating: 5,
+    review: "Non pain and good doctor Mr Shukla ji, treatment is giving best in Nalasopara.",
+    hasResponse: false
+  },
+  {
+    id: 6,
     name: "Ayush Singh",
+    reviewCount: 8,
     date: "4 months ago",
     rating: 5,
-    review: "A very good doctor and also explained the procedure very well and the fees is also good and reasonable."
+    review: "A very good doctor and also explained the procedure very well. The fees is also good and reasonable.",
+    hasResponse: false
   }
 ];
 
