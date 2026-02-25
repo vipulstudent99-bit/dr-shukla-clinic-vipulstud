@@ -757,9 +757,7 @@ const Home = () => {
                 required
                 className="w-full border-gray-300 focus:border-[#0EA5A4] focus:ring-[#0EA5A4]"
               />
-            </div>
-
-            {/* Phone Field */}
+            </div>            {/* Phone Field */}
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-sm font-medium text-[#1E3A5F]">
                 Phone Number <span className="text-[#DC2626]">*</span>
