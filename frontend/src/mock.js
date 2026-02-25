@@ -19,7 +19,7 @@ export const clinicData = {
   },
   googleRating: {
     stars: 4.9,
-    reviews: 800
+    reviews: 859
   },
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d60411.60771982756!2d72.81309215!3d19.42230235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x0%3A0x0!2s19.4281472%2C72.8203264!3m2!1d19.4281472!2d72.8203264!4m5!1s0x3be7a9e1825a10d3%3A0x45c03f177a1f0d14!2sDR%20SHUKLA%20DENTAL%20CLINIC%2C%20First%20Floor%2C%20Laxman%20Nagar%20Building%2C%20Flat%20no%20102%2F103%2F104%2C%20above%20Light%20Bill%20Payment%20Centre%2C%20opp.%20BJP%20Office%2C%20Galanagar%2C%20Nalasopara%20East%2C%20Maharashtra%20401209!3m2!1d19.4164445!2d72.8276892!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
 };
