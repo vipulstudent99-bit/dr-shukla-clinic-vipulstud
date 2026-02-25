@@ -222,98 +222,209 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Hero Section - Compact Layout */}
-      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-8 lg:py-12 min-h-[calc(100vh-64px)]">
+      {/* Hero Section - Authority Focused */}
+      <section className="bg-gradient-to-br from-[#F8FAFC] to-[#E8F4F8] py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
             {/* Left Column - Content */}
             <div className="flex-1 order-2 lg:order-1">
-              {/* Specialty Badge */}
-              <div className="inline-flex items-center bg-red-50 text-red-600 px-3 py-1.5 rounded-full mb-4 border border-red-200">
-                <MapPin className="w-3 h-3 mr-1.5" />
-                <span className="text-xs font-medium">DENTAL CLINIC IN NALASOPARA</span>
-              </div>
-
-              {/* Clinic Name */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E3A5F] mb-1">
-                Dr Shukla <span className="text-red-600">Dental Clinic</span>
+              {/* Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-4 leading-tight">
+                Advanced Dental Implants & Painless Laser Tooth Removal
               </h1>
 
-              {/* Tagline */}
-              <p className="text-base text-gray-600 italic mb-4">
-                "Restoring Smiles... Building Confidence"
+              {/* Subheadline */}
+              <p className="text-base sm:text-lg text-gray-700 font-medium mb-3">
+                18+ Years Experience | 859+ Google Reviews | 4.9⭐ Rating
               </p>
 
-              {/* Doctor Info */}
-              <div className="mb-4">
-                <p className="text-lg font-semibold text-[#1E3A5F]">{doctorData.name}</p>
-                <p className="text-sm text-gray-600">{doctorData.qualifications} • {doctorData.registration}</p>
-              </div>
+              {/* Supporting Line */}
+              <p className="text-sm sm:text-base text-gray-600 mb-6">
+                Modern techniques. Clear explanation. Patient-first approach.
+              </p>
 
-              {/* Address */}
-              <div className="flex items-start text-gray-600 mb-4">
-                <MapPin className="w-4 h-4 mr-2 mt-0.5 text-red-500 flex-shrink-0" />
-                <p className="text-xs leading-relaxed">{clinicData.location.fullAddress}</p>
+              {/* Trust Badges Row */}
+              <div className="flex flex-wrap gap-3 mb-6">
+                <div className="flex items-center gap-1.5 bg-white px-3 py-2 rounded-lg shadow-sm border border-gray-200">
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <span className="text-sm font-semibold text-gray-800">4.9⭐ Rating</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-white px-3 py-2 rounded-lg shadow-sm border border-gray-200">
+                  <span className="text-sm font-semibold text-gray-800">859+ Reviews</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-white px-3 py-2 rounded-lg shadow-sm border border-gray-200">
+                  <span className="text-sm font-semibold text-gray-800">18+ Years Experience</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-white px-3 py-2 rounded-lg shadow-sm border border-gray-200">
+                  <span className="text-sm font-semibold text-gray-800">Open 7 Days</span>
+                </div>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-2">
-                <Button onClick={() => setIsAppointmentModalOpen(true)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 h-9 text-sm">
-                  <CalendarIcon className="w-4 h-4 mr-1.5" />
+              <div className="flex flex-wrap gap-3 mb-2">
+                <Button onClick={() => setIsAppointmentModalOpen(true)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 h-11">
+                  <CalendarIcon className="w-4 h-4 mr-2" />
                   Book Appointment
                 </Button>
-                <Button onClick={handleCallNow} variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 font-semibold px-4 h-9 text-sm">
-                  <Phone className="w-4 h-4 mr-1.5" />
+                <Button onClick={handleCallNow} variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 font-semibold px-6 h-11">
+                  <Phone className="w-4 h-4 mr-2" />
                   Call Now
                 </Button>
-                <Button onClick={handleWhatsApp} variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 font-semibold px-4 h-9 text-sm">
-                  <MessageCircle className="w-4 h-4 mr-1.5" />
+                <Button onClick={handleWhatsApp} variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 font-semibold px-6 h-11">
+                  <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp
                 </Button>
               </div>
+
+              {/* Microcopy */}
+              <p className="text-xs text-gray-500 italic">Quick response on WhatsApp</p>
             </div>
 
-            {/* Right Column - Doctor Image (Square, Smaller) */}
+            {/* Right Column - Doctor Image */}
             <div className="order-1 lg:order-2 flex-shrink-0">
               <div className="relative">
                 <img 
                   src={doctorData.image} 
-                  alt="Dr. Yogendra R. Shukla - Best Dentist in Nalasopara"
-                  className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-2xl object-cover object-top shadow-xl border-4 border-white"
+                  alt="Dr. Yogendra R. Shukla - Advanced Dental Implants Expert"
+                  className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl object-cover object-top shadow-2xl border-4 border-white"
                 />
-                {/* Google Rating Badge */}
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-lg px-3 py-2 border border-gray-200">
-                  <div className="flex items-center gap-0.5 justify-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-xs font-semibold text-gray-800 text-center whitespace-nowrap">{clinicData.googleRating.stars} · {clinicData.googleRating.reviews}+ Reviews</p>
-                </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Stats Bar */}
-          <div className="grid grid-cols-4 gap-2 sm:gap-4 mt-8 pt-6 border-t border-gray-300">
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-red-600">18+</p>
-              <p className="text-xs text-gray-600">Years Exp.</p>
+      {/* Quick Treatment Highlight - 3 Compact Cards */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg text-[#1E3A5F]">Advanced Dental Implants</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Permanent screw-based fixed teeth solution.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg text-[#1E3A5F]">Laser-Assisted Tooth Removal</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Minimal discomfort. Faster healing.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg text-[#1E3A5F]">General & Restorative Care</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">Complete dental treatment under one roof.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof - Compact Review Quotes */}
+      <section className="py-12 bg-[#F8FAFC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Card className="border-gray-200 bg-white">
+              <CardContent className="pt-5 pb-5">
+                <p className="text-sm text-gray-700 mb-3">"Had pain in my tooth and finally found a good doctor."</p>
+                <p className="text-xs font-semibold text-gray-600">– Roshan M.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 bg-white">
+              <CardContent className="pt-5 pb-5">
+                <p className="text-sm text-gray-700 mb-3">"Doctor explained all process clearly and waiting time is very less."</p>
+                <p className="text-xs font-semibold text-gray-600">– Arun G.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 bg-white">
+              <CardContent className="pt-5 pb-5">
+                <p className="text-sm text-gray-700 mb-3">"Painless treatment. Clinic very clean."</p>
+                <p className="text-xs font-semibold text-gray-600">– Rasika G.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 bg-white">
+              <CardContent className="pt-5 pb-5">
+                <p className="text-sm text-gray-700 mb-3">"Removed tooth safely without any problem."</p>
+                <p className="text-xs font-semibold text-gray-600">– Anil J.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Transparency & Trust Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1E3A5F] mb-6">
+            Comfortable & Transparent Dental Care
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4 text-left mb-8">
+            <div className="flex items-start">
+              <span className="text-green-600 mr-3 text-lg font-bold">✓</span>
+              <p className="text-gray-700">Clear explanation before treatment</p>
             </div>
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-red-600 flex items-center justify-center">
-                {clinicData.googleRating.stars}<Star className="w-4 h-4 fill-yellow-400 text-yellow-400 ml-0.5" />
-              </p>
-              <p className="text-xs text-gray-600">Rating</p>
+            <div className="flex items-start">
+              <span className="text-green-600 mr-3 text-lg font-bold">✓</span>
+              <p className="text-gray-700">No unnecessary procedures</p>
             </div>
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-red-600">{clinicData.googleRating.reviews}+</p>
-              <p className="text-xs text-gray-600">Reviews</p>
+            <div className="flex items-start">
+              <span className="text-green-600 mr-3 text-lg font-bold">✓</span>
+              <p className="text-gray-700">Cost discussed before starting</p>
             </div>
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-red-600">365</p>
-              <p className="text-xs text-gray-600">Days Open</p>
+            <div className="flex items-start">
+              <span className="text-green-600 mr-3 text-lg font-bold">✓</span>
+              <p className="text-gray-700">Focus on painless approach</p>
             </div>
+          </div>
+          <Button onClick={handleCallNow} variant="outline" className="border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white font-semibold px-8">
+            Talk to Dentist
+          </Button>
+        </div>
+      </section>
+
+      {/* Doctor Section - Compact Authority Block */}
+      <section className="py-12 bg-[#F8FAFC]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-[#1E3A5F] mb-2">
+            Dr. Yogendra R. Shukla
+          </h2>
+          <p className="text-gray-600 font-medium mb-3">BDS | 18+ Years Experience</p>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            Focused on advanced implant procedures and patient comfort.
+          </p>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1E3A5F] mb-6">
+            Consult Early. Prevent Complications.
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button onClick={handleCallNow} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 h-12">
+              <Phone className="w-4 h-4 mr-2" />
+              Call Now
+            </Button>
+            <Button onClick={handleWhatsApp} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 h-12">
+              <MessageCircle className="w-4 h-4 mr-2" />
+              WhatsApp
+            </Button>
+            <Button onClick={() => setIsAppointmentModalOpen(true)} variant="outline" className="border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white font-semibold px-8 h-12">
+              <CalendarIcon className="w-4 h-4 mr-2" />
+              Book Appointment
+            </Button>
           </div>
         </div>
       </section>
